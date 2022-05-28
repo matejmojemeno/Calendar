@@ -1,17 +1,15 @@
 #include <array>
 #include <string>
-
-#include "controls.h"
+#include <ncurses.h>
 
 class Menu
 {
 public:
+    void startMenu();
     void displayMenu() const;
+    void updatePos(int c);
 
-    Menu &moveUp();
-    Menu &moveDown();
-
-private:
     int pos = 0;
-    static const std::array<std::string, 4> menuItems;
+private:
+    static const std::array<const char *, 4> menuItems;
 };

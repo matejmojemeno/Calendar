@@ -3,5 +3,5 @@
 class Controls {
 public:
     void initNcurses();
-    int readKey();
+    void endNcurses();    
 };
