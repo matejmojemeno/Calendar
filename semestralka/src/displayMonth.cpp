@@ -1,23 +1,36 @@
-#include <iostream>
-#include <iomanip>
-
 #include "displayMonth.h"
 
 void DisplayMonth::displayDays(const Time &time) const
 {
-    int dayOfWeek = time.dayNumber(), monthDays = time.monthDays();
+     int day = 1, dayOfWeek = time.dayNumber(time.m_year, time.m_mon, 1);
 
-    std::cout << std::setfill(' ') << std::setw(dayOfWeek*4);
+     for (int i = 0; i < 6; i++) {
+         for (int j = 0; j < 7; j++) {
+            if ((i == 0 && j < dayOfWeek) || day > time.monthDays())
+                continue;
+            if (day == time.m_day)
+                attron(COLOR_PAIR(1));
+            mvprintw(2 + i, j*4 + 3, "%d", day);
+            attroff(COLOR_PAIR(1));
+         }
+     }
+}
 
-    for (int i = 1; i < monthDays; i++) {
-        std::cout << i << " ";
+void DisplayMonth::controlDisplay() const
+{
+    Time time;
 
-        if (++dayOfWeek > 6) {
-            dayOfWeek = 0;
-            std::cout << std::endl;
-        }
-    }
+    display(time);
+    int c = getch();
 
-    if (dayOfWeek)
-        std::cout << std::endl; 
+    while (c != 10) {
+        if (c == KEY_UP)
+            time = time - 7;
+        else if (c == KEY_DOWN)
+            time = time + 7;
+        else if (c == KEY_RIGHT)
+            time = time + 1;
+        else if (c == KEY_LEFT)
+            time = time - 1;
+    } 
 }

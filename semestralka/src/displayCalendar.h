@@ -1,11 +1,14 @@
-#include <string>
 #include <array>
+#include <cstring>
+#include <ncurses.h>
 
 #include "time.h"
 
 class DisplayCalendar
 {
 public:
+    void display(const Time &) const;
+
     /**
      * @brief
      * displays month and year
@@ -22,7 +25,7 @@ public:
      * @brief
      * displays days from Sunday to Saturday above dates
      */
-    virtual void displayDayNames() const = 0;
+    virtual void displayDayNames() const;
 
     /**
      * @brief
@@ -31,8 +34,8 @@ public:
     virtual void displayDays(const Time &) const = 0;
 
 private:
-    static const std::array<std::string, 12> months;
-    static const std::array<std::string, 7> days;
+    static const std::array<const char *, 12> months;
+    static const std::array<const char *, 7> days;
 
-    int lenYear(int) const;
+    // int lenYear(int) const;
 };
