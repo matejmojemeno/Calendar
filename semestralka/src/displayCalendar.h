@@ -19,7 +19,7 @@ public:
      * @brief
      * displays chosen events
      */
-    virtual void displayEvents() const;
+    //virtual void displayEvents() const;
 
     /**
      * @brief

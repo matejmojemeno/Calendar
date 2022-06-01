@@ -11,6 +11,14 @@ int main()
     b.startMenu();
     //if (b.pos == 0);
 
-    //DisplayMonth c;
-    //c.controlDisplay();
+    //while(true);
+
+    DisplayMonth c;
+    c.controlDisplay();
+
+    clear();
+    printw(a.getString().c_str());
+    getch();
+
+    endwin();
 }
