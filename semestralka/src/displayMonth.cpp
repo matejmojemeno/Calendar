@@ -18,10 +18,8 @@ void DisplayMonth::displayDays(const Time &time) const
     }
 }
 
-void DisplayMonth::controlDisplay() const
+void DisplayMonth::controlDisplay(Time &time) const
 {
-    Time time;
-
     display(time);
     int c = getch();
 

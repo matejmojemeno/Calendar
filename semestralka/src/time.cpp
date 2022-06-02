@@ -19,7 +19,8 @@ Time::Time(int year, int mon, int day, int hour, int min)
     m_hour = hour;
     m_min = min;
 
-    checkDate();
+    if (! checkDate())
+        throw std::invalid_argument("Invalid date or format");
 }
 
 bool Time::operator<(const Time &rs) const
@@ -57,7 +58,7 @@ int Time::monthDays(int year, int mon) const
 
 bool Time::checkDate() const
 {
-    if (m_mon < 1 || m_day < 1 || m_hour < 0 || m_min < 0)
+    if (m_year < 0 || m_mon < 1 || m_day < 1 || m_hour < 0 || m_min < 0)
         return false;
     if (m_mon > 12 || m_day > monthDays() || m_hour > 23 || m_min > 59)
         return false;
@@ -93,34 +94,43 @@ long long Time::toDays() const
     return days + m_day;
 }
 
-Time &Time::toDate(long long days)
+void Time::toDate(long long days)
 {
     m_year = 0;
     m_mon = m_day = 1;
+
+    getYear(days);
+    adjust(days);
+    getMon(days);
+    m_day += days;
+}
+
+void Time::getYear(long long &days) {
     while ((days - toDays()) / 366) {
         m_year += (days - toDays()) / 366;
     }
     days -= toDays();
+}
 
+void Time::adjust(long long &days) {
     if (days == 365 && !isLeap(m_year)) {
         m_year++;
         days = 0;
     }
+}
 
+void Time::getMon (long long &days) {
     while (days >= monthDays()) {
         days -= monthDays();
         m_mon++;
     }
-
-    m_day += days;
-
-    return *this;
 }
 
 Time &Time::operator+(int amount) {
     if (! amount)
         return *this;
     toDate(toDays() + amount);
+    zeroTime();
     return *this;
 }
 
@@ -128,5 +138,11 @@ Time &Time::operator-(int amount) {
     if (! amount)
         return *this;
     toDate(toDays() - amount);
+    zeroTime();
     return *this;
+}
+
+void Time::zeroTime() {
+    if (m_day < 1)
+        m_day = 1;
 }

@@ -1,5 +1,6 @@
 #include <tuple>
 #include <ctime>
+#include <stdexcept>
 
 class Time
 {
@@ -16,11 +17,15 @@ public:
     int dayNumber(int, int, int) const;
     int countLeapYears(int) const;
     long long toDays() const;
-    Time &toDate(long long);
+    void toDate(long long);
     Time &operator+(const int);
     Time &operator-(const int);
 
     int m_year, m_mon, m_day, m_hour, m_min;
 
 private:
+    void getYear(long long&);
+    void adjust(long long&);
+    void getMon(long long&);
+    void zeroTime();
 };

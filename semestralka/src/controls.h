@@ -2,11 +2,14 @@
 #include <string>
 #include <cstring>
 
+#define highlight COLOR_PAIR(1)
+
 class Controls {
 public:
     void initNcurses() const;
-    std::string getString() const;
     void endNcurses() const;
+    void showCursor() const;
+    void stopCursor() const;
 private:
-    std::string convertString(char[]) const;    
+    void initColors() const;
 };

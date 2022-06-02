@@ -5,5 +5,5 @@ class DisplayMonth : public DisplayCalendar
 public:
     void displayDays(const Time &) const override;
 
-    void controlDisplay() const;
+    void controlDisplay(Time &) const;
 };

@@ -10,6 +10,7 @@ public:
     void updatePos(int c);
 
     int pos = 0;
+
 private:
     static const std::array<const char *, 4> menuItems;
 };

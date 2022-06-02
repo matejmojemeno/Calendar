@@ -2,7 +2,7 @@
 #include <cstring>
 #include <ncurses.h>
 
-#include "time.h"
+#include "stringParser.h"
 
 class DisplayCalendar
 {

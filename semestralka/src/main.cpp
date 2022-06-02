@@ -1,24 +1,31 @@
 #include <iostream>
-#include "controls.h"
-#include "menu.h"
-#include "displayMonth.h"
+#include <ncurses.h>
+
+//#include "stringParser.h"
+//#include "menu.h"
+//#include "displayMonth.h"
+#include "eventWrapper.h"
+//#include "controls.h"
+
+using namespace std;
 
 int main()
 {
-    Controls a;
-    a.initNcurses();
-    Menu b; 
-    b.startMenu();
-    //if (b.pos == 0);
+    Controls c; 
+    EventWrapper e;
+    c.initNcurses();
 
-    //while(true);
+    try { e.getEvent(); }
+    catch (std::invalid_argument &ia) {
+        clear();
+        attron(COLOR_PAIR(3));
+        printw(ia.what());
+        attroff(COLOR_PAIR(3));
+    }
 
-    DisplayMonth c;
-    c.controlDisplay();
-
-    clear();
-    printw(a.getString().c_str());
     getch();
 
-    endwin();
+    c.endNcurses();
+
+    return 0;
 }

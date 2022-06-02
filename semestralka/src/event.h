@@ -1,14 +1,18 @@
 #include <vector>
 #include <string>
-#include "time.h"
+#include "stringParser.h"
 
 class Event
 {
 public:
-    Event(const Time &, const Time &, std::vector<std::string>, std::string);
-    
+    Event(const Time, const Time, std::string, std::string, std::vector<std::string>);
+
+    //void displaySmall() const;
+    void displaySmall(int, bool) const;
+    void displayFull(int) const;
+
 private:
     Time start, end;
     std::vector<std::string> participants;
-    std::string place;
+    std::string name, place;
 };
