@@ -2,6 +2,7 @@
 
 const std::array<const char *, 12> DisplayCalendar::months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 const std::array<const char *, 7> DisplayCalendar::days = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+const std::array<const char *, 7> DisplayCalendar::fullDays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sat"};
 
 
 void DisplayCalendar::displayHeader(const Time& time) const
@@ -15,18 +16,6 @@ void DisplayCalendar::displayDayNames() const
     for (int i = 0; i < 7; i++)
         mvprintw(1, i*4 + 3, days[i]);
 }
-
-// int DisplayCalendar::lenYear(int year) const
-// {
-//     int cnt;
-//     while (year)
-//     {
-//         cnt++;
-//         year /= 10;
-//     }
-
-//     return cnt;
-// }
 
 void DisplayCalendar::display(const Time &time) const
 {   

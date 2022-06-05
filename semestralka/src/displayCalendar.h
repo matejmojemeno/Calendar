@@ -2,7 +2,7 @@
 #include <cstring>
 #include <ncurses.h>
 
-#include "stringParser.h"
+#include "eventWrapper.h"
 
 class DisplayCalendar
 {
@@ -33,9 +33,10 @@ public:
      */
     virtual void displayDays(const Time &) const = 0;
 
-private:
+    virtual void controlDisplay(Time &, const EventStorage &) const = 0;
+
+protected:
     static const std::array<const char *, 12> months;
     static const std::array<const char *, 7> days;
-
-    // int lenYear(int) const;
+    static const std::array<const char *, 7> fullDays;
 };

@@ -18,12 +18,12 @@ void DisplayMonth::displayDays(const Time &time) const
     }
 }
 
-void DisplayMonth::controlDisplay(Time &time) const
+void DisplayMonth::controlDisplay(Time &time, const EventStorage &events) const
 {
     display(time);
     int c = getch();
 
-    while (c != 10)
+    while (c != 4)
     {
         if (c == KEY_UP)
             time = time - 7;
@@ -33,6 +33,8 @@ void DisplayMonth::controlDisplay(Time &time) const
             time = time + 1;
         else if (c == KEY_LEFT)
             time = time - 1;
+        else if (c == 10)
+            day.controlDisplay(time, events);
 
         display(time);
         c = getch();

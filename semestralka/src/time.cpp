@@ -19,7 +19,25 @@ Time::Time(int year, int mon, int day, int hour, int min)
     m_hour = hour;
     m_min = min;
 
-    if (! checkDate())
+    if (!checkDate())
+        throw std::invalid_argument("Invalid date or format");
+}
+
+Time::Time(std::string year, int mon, int day, int hour, int min)
+{
+    try {
+        stoi(year);
+    }
+    catch (...) {
+        throw std::invalid_argument("Invalid date or format");
+    }
+    m_year = stoi(year);
+    m_mon = mon;
+    m_day = day;
+    m_hour = hour;
+    m_min = min;
+
+    if (!checkDate())
         throw std::invalid_argument("Invalid date or format");
 }
 
@@ -28,9 +46,14 @@ bool Time::operator<(const Time &rs) const
     return std::tie(m_year, m_mon, m_day, m_hour, m_min) < std::tie(rs.m_year, rs.m_mon, rs.m_day, rs.m_hour, rs.m_min);
 }
 
+bool Time::operator<=(const Time &rs) const
+{
+    return std::tie(m_year, m_mon, m_day, m_hour, m_min) <= std::tie(rs.m_year, rs.m_mon, rs.m_day, rs.m_hour, rs.m_min);
+}
+
 bool Time::operator==(const Time &rs) const
 {
-    return !(*this < rs || *this < rs);
+    return std::tie(m_year, m_mon, m_day, m_hour, m_min) == std::tie(rs.m_year, rs.m_mon, rs.m_day, rs.m_hour, rs.m_min);
 }
 
 bool Time::isLeap(int year) const
@@ -105,44 +128,70 @@ void Time::toDate(long long days)
     m_day += days;
 }
 
-void Time::getYear(long long &days) {
-    while ((days - toDays()) / 366) {
+void Time::getYear(long long &days)
+{
+    while ((days - toDays()) / 366)
+    {
         m_year += (days - toDays()) / 366;
     }
     days -= toDays();
 }
 
-void Time::adjust(long long &days) {
-    if (days == 365 && !isLeap(m_year)) {
+void Time::adjust(long long &days)
+{
+    if (days == 365 && !isLeap(m_year))
+    {
         m_year++;
         days = 0;
     }
 }
 
-void Time::getMon (long long &days) {
-    while (days >= monthDays()) {
+void Time::getMon(long long &days)
+{
+    while (days >= monthDays())
+    {
         days -= monthDays();
         m_mon++;
     }
 }
 
-Time &Time::operator+(int amount) {
-    if (! amount)
+Time Time::operator+(int amount) const
+{
+    Time tmp;
+
+    if (!amount)
         return *this;
-    toDate(toDays() + amount);
-    zeroTime();
-    return *this;
+
+    tmp.toDate(toDays() + amount);
+    tmp.zeroTime();
+
+    return tmp;
 }
 
-Time &Time::operator-(int amount) {
-    if (! amount)
+Time Time::operator-(int amount) const
+{
+    Time tmp;
+
+    if (!amount)
         return *this;
-    toDate(toDays() - amount);
-    zeroTime();
-    return *this;
+
+    tmp.toDate(toDays() - amount);
+    tmp.zeroTime();
+
+    return tmp;
 }
 
-void Time::zeroTime() {
+int Time::operator-(const Time &rs) const {
+    return rs.toDays() - toDays();
+}
+
+void Time::zeroTime()
+{
     if (m_day < 1)
         m_day = 1;
+}
+
+bool Time::isEvenWeek() const
+{
+    return !((toDays() % 14) / 7);
 }

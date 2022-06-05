@@ -2,7 +2,10 @@
 #include <string>
 #include <cstring>
 
-#define highlight COLOR_PAIR(1)
+#define HIGHLIGHT COLOR_PAIR(1)
+#define INPUT COLOR_PAIR(2)
+#define ERROR COLOR_PAIR(3)
+#define BLUE COLOR_PAIR(4)
 
 class Controls {
 public:

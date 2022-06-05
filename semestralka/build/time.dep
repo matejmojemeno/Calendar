@@ -1,0 +1,1 @@
+build/time.o: src/time.cpp src/time.h

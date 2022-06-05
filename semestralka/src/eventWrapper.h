@@ -1,37 +1,36 @@
-#include <vector>
-#include <memory>
 #include <iostream>
 #include <array>
+#include <algorithm>
 
-#include "event.h"
-//#include "stringParser.h"
+#include "eventStorage.h"
 
 class EventWrapper
 {
 public:
     void getEvent();
+    void getFileEvent();
+    void findName() const;
+    void findPlace();
+
     Time getStart() const;
     Time getEnd() const;
     std::string getName() const;
     std::string getPlace() const;
     std::vector<std::string> getParticipants() const;
     int getRepetition() const;
-    void insertEvent(const Time &);
 
+    EventStorage storage;
 private:
-    std::vector<std::shared_ptr<Event>> eventsByStart;
-    std::vector<std::shared_ptr<Event>> eventsByEnd;
-    std::vector<std::shared_ptr<Event>> eventsByName;
-    std::vector<std::shared_ptr<Event>> eventsByPlace;
-
-    void insertStart(const Time &);
-    void insertend(const Time &);
-    void insertname(const Time &);
-    void insertPlace(const Time &);
     void resetLine() const;
     void checkEventTime(const Time &, const Time &) const;
     void drawRepMenu(const int) const;
     void updatePos(const int, int &) const;
+    bool checkChar(std::ifstream &, char) const;
+    Time getFileTime(std::ifstream &) const;
+    std::string getFileString(std::ifstream &) const;
+    std::vector<std::string> getFilePart(std::ifstream &) const;
+    int getFileRep(std::ifstream &) const;
 
-    static const std::array<std::string, 4> repMenu;
+    Parser p;
+    static const std::array<std::string, 5> repMenu;
 };

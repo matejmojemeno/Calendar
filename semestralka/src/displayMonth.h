@@ -1,9 +1,12 @@
-#include "displayCalendar.h"
+#include "displayWeek.h"
 
 class DisplayMonth : public DisplayCalendar
 {
 public:
     void displayDays(const Time &) const override;
 
-    void controlDisplay(Time &) const;
+    void controlDisplay(Time &, const EventStorage &) const override;
+
+private:
+    DisplayDay day;
 };

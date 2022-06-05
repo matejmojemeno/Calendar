@@ -5,9 +5,9 @@ std::string Parser::getString() const
     Controls n;
     n.showCursor();
 
-    char string[42];
+    char string[60];
     attron(COLOR_PAIR(2));
-    getnstr(string, 42);
+    getnstr(string, 60);
     attroff(COLOR_PAIR(2));
     n.stopCursor();
 
@@ -17,7 +17,6 @@ std::string Parser::getString() const
 std::string Parser::convertString(char string[]) const
 {
     std::string newString;
-    int pos = 0;
 
     while (*string)
         newString.push_back(*string++);
@@ -27,23 +26,15 @@ std::string Parser::convertString(char string[]) const
 
 Time Parser::parseDate() const
 {
-    int year, mon, day, hour, min;
+    char year[255];
+    int mon, day, hour, min;
     std::string date = getString();
 
-    sscanf(date.c_str(), "%d.%d.%d %d:%d", &day, &mon, &year, &hour, &min);
+    if (! sscanf(date.c_str(), "%d.%d.%s %d:%d", &day, &mon, year, &hour, &min))
+        throw std::invalid_argument("Invalid date or format.");
 
     Time time(year, mon, day, hour, min);
     return time;
-}
-
-std::string Parser::parseName() const
-{
-    return getString();
-}
-
-std::string Parser::parsePlace() const
-{
-    return getString();
 }
 
 strItr Parser::leftTrim(std::string &str) const
@@ -83,9 +74,15 @@ void Parser::insertString(std::vector<std::string> &participanst, std::string &t
 
 std::vector<std::string> Parser::parseParticipants() const
 {
-    size_t pos = 0;
-    std::vector<std::string> participants;
     std::string str = getString(), token;
+
+    return getVector(str);
+}
+
+std::vector<std::string> Parser::getVector(std::string &str) const {
+    std::vector<std::string> participants;
+    std::string token;
+    size_t pos = 0;
 
     while ((pos = str.find(',')) != std::string::npos)
     {

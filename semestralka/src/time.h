@@ -1,5 +1,6 @@
 #include <tuple>
 #include <ctime>
+#include <cstdlib>
 #include <stdexcept>
 
 class Time
@@ -7,7 +8,9 @@ class Time
 public:
     Time();
     Time(int, int, int, int, int);
+    Time(std::string, int, int, int, int);
     bool operator<(const Time &) const;
+    bool operator<=(const Time &) const;
     bool operator==(const Time &) const;
     bool isLeap(int) const;
     int monthDays(int, int) const;
@@ -18,8 +21,10 @@ public:
     int countLeapYears(int) const;
     long long toDays() const;
     void toDate(long long);
-    Time &operator+(const int);
-    Time &operator-(const int);
+    Time operator+(int) const;
+    Time operator-(int) const;
+    int operator-(const Time &) const;
+    bool isEvenWeek() const;
 
     int m_year, m_mon, m_day, m_hour, m_min;
 
