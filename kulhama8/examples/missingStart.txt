@@ -1,0 +1,5 @@
+end = 10.1.2022 10:40
+name = start
+place = end
+participants = ludek, jozef, vojta
+repetition = 0

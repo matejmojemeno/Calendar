@@ -1,0 +1,6 @@
+start = 6.6.2022 14:50
+end = 6.6.2022 15:20
+name = late lunch
+place = menza!
+participants = he, him, her
+repetition = never

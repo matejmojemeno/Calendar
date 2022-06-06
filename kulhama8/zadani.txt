@@ -1,0 +1,65 @@
+== Plánovací kalendár
+
+Aplikace pro správu kalendáře s možností vytvářet události a jejich hledání.
+
+Implementujte následující funcionalitu:
+
+ . denní, týdenní a měsíční zobrazení kalendáře
+ . vytvářet a spravovat události (čas, místo, datum, účastníci, ...)
+ . možnost nastavit události opakování (jednou za týden, 14 dní, ...)
+ . hledat události podle názvu a/nebo místa konání
+ . hledat nejbližší možný termín a možnost přesouvat události
+ . exportování a importování událostí
+ 
+ Použití polymorfismu (doporučené)
+
+ . druhy událostí: povinná, volitelná, přesunutelná, ...
+ . strategie přesunů: nejbližší možný (s omezením), nejbližší možný s přesunutím X jiných událostí
+ . zobrazení kalendáře (denní, týdenní, měsíční)
+ . formáty exportovaných událostí
+ 
+ == Špecifikácia
+ 
+  - Po spustení programu sa zobrazí menu realizované pomocou triedy **Menu**. Pohybovať sa v ňom bude pomocou arrow keys (up, down), a položka sa bude vyberať pomocou klávesy enter
+ 	Menu:
+ 		Calendar
+ 		Week Calendar
+ 		Events
+ 		Exit
+ 
+  - kalendár bude interaktívny, vstup z klávesnice budeme načítavať pomocou knižnice ncurses.h 
+  - Zobrazenie kalendáru bude implementované v triede **DisplayCalendar**, z ktorej budú derivované ďalšie viac konkrétne triedy. Výpis sa bude robiť vo viacerých metódach, a to **displayHeader**, **displayDayNames**, **displayDays** a **displayEvents**. Deň, na ktorý bude užívateľ "ukazovať" (po spustení aktuálny dátum) bude zvýraznený inou farbou, a pohyb medzi nimi bude pomocou arrow keys. 
+  - Na spravovanie udalostí bude trieda **EventWrapper**, ktorá bude obsahovať inštanciu triedy **EventStorage**, ktorá bude využitá, ako hromadné úložisko udalostí. Udalosti sa budú deliť na udalosti s opakovaním a udalosti bez opakovania. Keďže, udalosti s opakovaním máme opakovane naplánované navždy, môžeme ich označiť za udalosti s nižšou prioritou, a kvôli tomu neregistrujeme kolíziu opakovaných udalostí s ostatnými udalosťami. Pri udalostiach bez opakovania budeme však kolíziu detekovať, a po nepodarenom vložení udalosti navrhneme užívateľovi najbližší možný dátum, kam udalosť presunúť. Ak chceme presunúť udalosť, ktorá už je uskladnená, nastavuje sa jej priorita vyššie, ako priorita ostatných udalostí, a kvôli tomu nedetekujeme jej kolíziu.
+  - Na pozadí bude všetky operácie s časom ovládať trieda **Time**, ktorá bude obsahovať tri konštruktory, **Time()** vytvorí inštanciu triedy s aktuálnym časom, **Time(int, int, int, int, int)**, ktorý  vytvorí inštanciu triedy so zadaným časom, tretí je nadstavba druhého, a teda zároveň kontroluje, či zadaný rok nie je väčší, ako MAX_INT. Trieda bude obsahovať operátory na porovnávanie, kontrolu platnosti dátumu pomocou metódy **checkDate**, zistenie počtu dní v mesiaci v metóde **monthDays** a zistenie poradia dňa v týždni pomocou metódy **dayNumber**.
+  
+== Polymorfizmus
+ - polymorfizmus je aplikovaný v triedach **DisplayCalendar**, ktorá má troch potomkov **DisplayMonth**, **DisplayWeek** a **DisplayDay**. Trieda bude obsahovať polymorfné metódy **displayHeader**, **displayDayNames**, **displayDays**.
+ 
+ Mesačné zobrazenie:
+ 
+ 	Month 2022
+ Sun Mon Tue Wed Thu Fri Sat
+  1   2   3   4   5   6   7
+  8   9  10  11  12  13  14
+ 15  16  17  18  19  20  21
+ 22  23  24  26  27  28  29
+ 30  31
+ 
+ Týždenné zobrazenie:
+ 
+ 	Month 2022
+ Sun Mon Tue Wed Thu Fri Sat
+  1   2   3   4   5   6   7
+ 
+  . event1
+  . event2
+ 
+ - budú zobrazené udalosti pre deň, na ktorý užívateľ práve ukazuje
+ 
+ Denné zobrazenie"
+ 
+ 	Month, day 2022
+  . event1
+  . event2
+  . event3
+ 

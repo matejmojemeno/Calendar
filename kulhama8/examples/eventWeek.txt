@@ -1,0 +1,6 @@
+start = 4.6.2022 10:00
+end = 5.6.2022 20:00
+name = progtest
+place = strahov
+participants = just me once again
+repetition = every week

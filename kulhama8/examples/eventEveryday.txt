@@ -1,0 +1,6 @@
+start = 6.6.2022 10:00
+end = 6.6.2022 22:00
+name = robenie semestralky
+place = vsade, kde sa da
+participants = ja
+repetition = every day

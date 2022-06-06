@@ -1,0 +1,6 @@
+start = 16.6.2022 9:00
+end = 16.6.2022 15:00
+name = defense
+place = skola
+participants = cviciaci, studenti, pan vagner?
+repetition = asi nie

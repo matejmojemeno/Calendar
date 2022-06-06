@@ -1,0 +1,6 @@
+start = 6.6.2022 15:00
+end = 6.6.2022 15:30
+name = defense
+place = dist
+participants = me, you
+repetition = 0
