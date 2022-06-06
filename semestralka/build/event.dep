@@ -1,2 +1,0 @@
-build/event.o: src/event.cpp src/event.h src/stringParser.h src/time.h \
- src/controls.h

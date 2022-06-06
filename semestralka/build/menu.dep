@@ -1,4 +1,0 @@
-build/menu.o: src/menu.cpp src/menu.h src/displayMonth.h \
- src/displayWeek.h src/displayDay.h src/displayCalendar.h \
- src/eventWrapper.h src/eventStorage.h src/event.h src/stringParser.h \
- src/time.h src/controls.h

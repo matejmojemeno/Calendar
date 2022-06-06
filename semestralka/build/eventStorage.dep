@@ -1,2 +1,0 @@
-build/eventStorage.o: src/eventStorage.cpp src/eventStorage.h src/event.h \
- src/stringParser.h src/time.h src/controls.h

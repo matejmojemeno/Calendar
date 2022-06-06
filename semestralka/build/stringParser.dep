@@ -1,2 +1,0 @@
-build/stringParser.o: src/stringParser.cpp src/stringParser.h src/time.h \
- src/controls.h
