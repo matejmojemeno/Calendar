@@ -2,7 +2,7 @@
 
 const std::array<const char *, 12> DisplayCalendar::months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 const std::array<const char *, 7> DisplayCalendar::days = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
-const std::array<const char *, 7> DisplayCalendar::fullDays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sat"};
+const std::array<const char *, 7> DisplayCalendar::fullDays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 
 DisplayCalendar::~DisplayCalendar() = default;
 

@@ -26,13 +26,13 @@ void DisplayMonth::controlDisplay(Time &time, const EventStorage &events) const
     while (c != 4)
     {
         if (c == KEY_UP)
-            time = time - 7;
+            time = time - WEEK;
         else if (c == KEY_DOWN)
-            time = time + 7;
+            time = time + WEEK;
         else if (c == KEY_RIGHT)
-            time = time + 1;
+            time = time + DAY;
         else if (c == KEY_LEFT)
-            time = time - 1;
+            time = time - DAY;
         else if (c == 10)
             day.controlDisplay(time, events);
 

@@ -83,10 +83,10 @@ void EventStorage::removeRep(const std::string &name, std::vector<Event> &rep)
 
 void EventStorage::findName(const std::string &name, bool &found, Event &event) const
 {
-    for (auto itr : allEvents)
-        if (itr.name == name)
+    for (auto i : allEvents)
+        if (i.name == name)
         {
-            event = itr;
+            event = i;
             found = true;
             break;
         }
@@ -139,16 +139,8 @@ Time EventStorage::findNewDate(const Event &event) const
 void EventStorage::moveEvent(const Event &event, const Time &newStart)
 {
     Time newEnd = event.end;
-    long long diff = event.start - newStart;
     
-    newEnd = newEnd + diff/(24*60);
-    newEnd.m_hour = event.end.m_hour;
-    newEnd.m_min = event.end.m_min;
-    diff %= (24*60);
-    newEnd.m_hour += (int) diff/60;
-    diff %= 60;
-    newEnd.m_min += (int) diff;
-    newEnd.adjustTime();
+    newEnd = newEnd + (event.start - newStart);
 
     insert(Event(newStart, newEnd, event.name, event.place, event.participants, event.rep));
 }
@@ -231,25 +223,25 @@ void EventStorage::insertRepeated(const Event &event)
 {
     if (event.rep == 1)
     {
-        if (event.start - event.end > 24 * 60)
+        if (event.start - event.end > DAY)
             throw std::invalid_argument("Event collides with itself.");
         dailyEvents.push_back(event);
     }
     else if (event.rep == 2)
     {
-        if (event.start - event.end > 7 * 24 * 60)
+        if (event.start - event.end > 7*WEEK)
             throw std::invalid_argument("Event collides with itself.");
         weeklyEvents.push_back(event);
     }
     else if (event.rep == 3)
     {
-        if (event.start - event.end > 14 * 24 * 60)
+        if (event.start - event.end > 2*WEEK)
             throw std::invalid_argument("Event collides with itself.");
         twoWeeklyEvents.push_back(event);
     }
     else
     {
-        if (event.start - event.end > 28 * 24 * 60)
+        if (event.start - event.end > 28*DAY)
             throw std::invalid_argument("Event collides with itself.");
         monthlyEvents.push_back(event);
     }
@@ -278,7 +270,7 @@ void EventStorage::sameDay(std::vector<Event> &dayEvents, const Time &time) cons
     {
         if (event.start.m_year == time.m_year && event.start.m_mon == time.m_mon && event.start.m_day == time.m_day)
             dayEvents.push_back(event);
-        else if (time + 1 < event.start)
+        else if (time + DAY < event.start)
             break;
     }
 }
@@ -286,21 +278,21 @@ void EventStorage::sameDay(std::vector<Event> &dayEvents, const Time &time) cons
 void EventStorage::sameDayReps(std::vector<Event> &dayEvents, const Time &time) const
 {
     for (auto event : dailyEvents)
-        if (event.start <= time + 1)
+        if (event.start <= time + DAY)
             dayEvents.push_back(event);
 }
 
 void EventStorage::sameWeekReps(std::vector<Event> &dayEvents, const Time &time) const
 {
     for (auto event : weeklyEvents)
-        if (event.start.dayNumber() == time.dayNumber() && event.start <= time + 1)
+        if (event.start.dayNumber() == time.dayNumber() && event.start <= time + DAY)
             dayEvents.push_back(event);
 }
 
 void EventStorage::sameTwoWeekReps(std::vector<Event> &dayEvents, const Time &time) const
 {
     for (auto event : twoWeeklyEvents)
-        if (event.start.dayNumber() == time.dayNumber() && event.start.isEvenWeek() == time.isEvenWeek() && event.start <= time + 1)
+        if (event.start.dayNumber() == time.dayNumber() && event.start.isEvenWeek() == time.isEvenWeek() && event.start <= time + DAY)
             dayEvents.push_back(event);
 }
 

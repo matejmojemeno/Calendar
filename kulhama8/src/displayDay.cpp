@@ -34,9 +34,9 @@ void DisplayDay::controlDisplay(Time &time, const EventStorage &events) const
         else if (c == KEY_DOWN)
             pos++;
         if (c == KEY_RIGHT && pos == -1)
-            time = time + 1;
+            time = time + DAY;
         else if (c == KEY_LEFT && pos == -1)
-            time = time - 1;
+            time = time - DAY;
 
         display(time, events, pos);
         c = getch();

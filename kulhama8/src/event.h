@@ -35,11 +35,11 @@ public:
     int displayFull() const;
     /**
      * @brief 
-     * moves event to another day
-     * @return Event 
+     * checks if event happens on given day
+     * @return true 
+     * @return false 
      */
-    Event operator+(int);
-
+    virtual bool isSameDay(const Time &) const = 0;
     /**
      * @brief 
      * prints event into file

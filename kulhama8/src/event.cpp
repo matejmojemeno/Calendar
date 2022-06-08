@@ -20,7 +20,7 @@ Event::Event(const Time &s, const Time &e, const std::string &n, const std::stri
     participants = part;
     rep = r;
 
-    if (rep < 0 || rep > 4)
+    if (rep < NEVER || rep > MONTHLY)
         rep = 0;
 }
 
@@ -65,12 +65,6 @@ int Event::displayFull() const
     }
 
     return 0;
-}
-
-
-Event Event::operator+ (int amount)
-{
-    return Event(start + amount, end + amount, name, place, participants, rep);
 }
 
 void Event::exportEvent() const {

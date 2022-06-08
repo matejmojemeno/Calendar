@@ -2,6 +2,14 @@
 #include <ctime>
 #include <cstdlib>
 #include <stdexcept>
+#include <iostream>
+
+#define YEAR 525600ll
+#define WEEK 10080ll
+#define DAY 1440ll
+#define HOUR 60ll
+#define LEAP_YEAR_DAYS 366ll
+#define MAX_YEAR 2000000000ll
 
 class Time
 {
@@ -13,125 +21,126 @@ public:
     Time();
     /**
      * @brief Construct a new Time object
+     * creates Time object with current date and given time
+     */
+    Time(long long, long long);
+    /**
+     * @brief Construct a new Time object
      * constructs date based on given arguments
      */
-    Time(int, int, int, int, int);
+    Time(long long, long long, long long, long long, long long);
     /**
      * @brief Construct a new Time object
      * constructs Time while checking for integer overflow
      */
-    Time(std::string, int, int, int, int);
+    Time(std::string, long long, long long, long long, long long);
     /**
-     * @brief Construct a new Time object
-     * copy constructor
-     */
-    Time(const Time &);
-    /**
-     * @brief 
+     * @brief
      * operators to compare two Times
-     * @return true 
-     * @return false 
+     * @return true
+     * @return false
      */
     bool operator<(const Time &) const;
     bool operator<=(const Time &) const;
     bool operator==(const Time &) const;
     /**
-     * @brief 
+     * @brief
      * checks if year is leap
-     * @return true 
-     * @return false 
+     * @return true
+     * @return false
      */
-    bool isLeap(int) const;
+    bool isLeap(long long) const;
     /**
-     * @brief 
+     * @brief
      * return number of days of current year
-     * @return int 
+     * @return int
      */
-    int monthDays(int, int) const;
+    int monthDays(long long, long long) const;
     /**
-     * @brief 
+     * @brief
      * return number of days of given month in a given year
-     * @return int 
+     * @return int
      */
     int monthDays() const;
     /**
-     * @brief 
+     * @brief
      * checks validity of date
-     * @return true 
-     * @return false 
+     * @return true
+     * @return false
      */
     bool checkDate() const;
     /**
-     * @brief 
+     * @brief
      * returns order of current day in week
-     * @return int 
+     * @return int
      */
     int dayNumber() const;
     /**
-     * @brief 
+     * @brief
      * returns order of given day in week
-     * @return int 
+     * @return int
      */
-    int dayNumber(int, int, int) const;
+    int dayNumber(long long, long long, long long) const;
     /**
-     * @brief 
+     * @brief
      * counts leap years in an interval
-     * @return int 
+     * @return int
      */
-    int countLeapYears(int) const;
+    int countLeapYears(long long) const;
     /**
-     * @brief 
+     * @brief
      * returns number of days from day 0 to current date
-     * @return long long 
+     * @return long long
      */
-    long long toDays() const;
+    long long toMinutes() const;
     /**
-     * @brief 
+     * @brief
      * turns number of days back to date
-     * @param long 
+     * @param long
      */
     void toDate(long long);
     /**
-     * @brief 
-     * return copy of object increased by n days
-     * @return Time 
+     * @brief
+     * return copy of object increased by n minutes
+     * @param long
+     * @return Time
      */
-    Time operator+(int) const;
+    Time operator+(long long) const;
     /**
-     * @brief 
-     * return copy of object decreased by n days
-     * @return Time 
-     */
-    Time operator-(int) const;
-    /**
-     * @brief 
+     * @brief
      * returns number of minutes between two dates
-     * @return long long 
+     * @return long long
      */
+    Time operator-(long long amount) const;
     long long operator-(const Time &) const;
     /**
-     * @brief 
+     * @brief
      * checks if week is odd or even
-     * @return true 
-     * @return false 
+     * @return true
+     * @return false
      */
     bool isEvenWeek() const;
-    /**
-     * @brief 
-     * adjusts time if it is wrong
-     */
-    void adjustTime();
 
-    int m_year, m_mon, m_day, m_hour, m_min;
+    long long m_year, m_mon, m_day, m_hour, m_min;
 
 private:
     /**
      * @brief Get the Year object
      * functions called by toDate
-     * @param long 
+     * @param long
      */
-    void getYear(long long&);
-    void adjust(long long&);
-    void getMon(long long&);
-    void zeroTime();
+    void getYear(long long &);
+    void getMon(long long &);
+    void getDays(long long &);
+    void getHours(long long &);
+    /**
+     * @brief 
+     * checks if remainder isnt whole year
+     */
+    void adjustMinutes(long long &);
+    /**
+     * @brief 
+     * checks if time is positive, sets to day 1 if not
+     */
+    void fixNegativeTime();
 };

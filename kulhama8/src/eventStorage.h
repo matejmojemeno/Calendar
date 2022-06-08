@@ -2,9 +2,9 @@
 #include <algorithm>
 #include "event.h"
 
-#define DAY 1
-#define WEEK 7
-#define TWOWEEKS 14
+#define ONE_DAY 1
+#define DAYS_IN_WEEK 7
+#define DAYS_IN_TWOWEEKS 14
 
 class EventStorage
 {

@@ -2,7 +2,7 @@
 
 void DisplayWeek::displayDays(const Time &time) const
 {
-    Time weekDay = time - time.dayNumber();
+    Time weekDay = time - time.dayNumber()*DAY;
 
     for (int i = 0; i < 7; i++)
     {
@@ -13,7 +13,7 @@ void DisplayWeek::displayDays(const Time &time) const
         mvprintw(2, 3 + 4 * i, "%d", weekDay.m_day);
         attroff(HIGHLIGHT);
         attroff(BLUE);
-        weekDay = weekDay + 1;
+        weekDay = weekDay + DAY;
     }
 }
 
@@ -46,9 +46,9 @@ void DisplayWeek::controlDisplay(Time &time, const EventStorage &events) const
         else if (c == KEY_DOWN)
             pos++;
         if (c == KEY_RIGHT && pos == -1)
-            time = time + 1;
+            time = time + DAY;
         else if (c == KEY_LEFT && pos == -1)
-            time = time - 1;
+            time = time - DAY;
         if (c == '\n')
             day.controlDisplay(time, events);
 

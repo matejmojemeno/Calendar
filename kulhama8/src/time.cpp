@@ -5,13 +5,20 @@ Time::Time()
     std::time_t t = std::time(0);
     struct tm *now = localtime(&t);
 
-    m_year = now->tm_year + 1900;
-    m_mon = now->tm_mon + 1;
-    m_day = now->tm_mday;
+    m_year = (long long)now->tm_year + 1900;
+    m_mon = (long long)now->tm_mon + 1;
+    m_day = (long long)now->tm_mday;
     m_hour = m_min = 0;
 }
 
-Time::Time(int year, int mon, int day, int hour, int min)
+Time::Time(long long hour, long long min)
+{
+    Time();
+    m_hour = hour;
+    m_min = min;
+}
+
+Time::Time(long long year, long long mon, long long day, long long hour, long long min)
 {
     m_year = year;
     m_mon = mon;
@@ -20,34 +27,26 @@ Time::Time(int year, int mon, int day, int hour, int min)
     m_min = min;
 
     if (!checkDate())
-        throw std::invalid_argument("Invalid date or format");
+        throw std::invalid_argument("Invalid date or format.");
 }
 
-Time::Time(std::string year, int mon, int day, int hour, int min)
+Time::Time(std::string year, long long mon, long long day, long long hour, long long min)
 {
-    try {
-        stoi(year);
+    try
+    {
+        m_year = stoll(year);
     }
-    catch (...) {
-        throw std::invalid_argument("Invalid date or format");
+    catch (...)
+    {
+        throw std::invalid_argument("Invalid date or format.");
     }
-    m_year = stoi(year);
     m_mon = mon;
     m_day = day;
     m_hour = hour;
     m_min = min;
 
     if (!checkDate())
-        throw std::invalid_argument("Invalid date or format");
-}
-
-Time::Time(const Time &time)
-{
-    m_year = time.m_year;
-    m_mon = time.m_mon;
-    m_day = time.m_day;
-    m_hour = time.m_hour;
-    m_min = time.m_min;
+        throw std::invalid_argument("Invalid date or format.");
 }
 
 bool Time::operator<(const Time &rs) const
@@ -65,7 +64,7 @@ bool Time::operator==(const Time &rs) const
     return std::tie(m_year, m_mon, m_day, m_hour, m_min) == std::tie(rs.m_year, rs.m_mon, rs.m_day, rs.m_hour, rs.m_min);
 }
 
-bool Time::isLeap(int year) const
+bool Time::isLeap(long long year) const
 {
     return year % 4000 && (!(year % 400) || (year % 100 && !(year % 4)));
 }
@@ -79,7 +78,7 @@ int Time::monthDays() const
     return 31;
 }
 
-int Time::monthDays(int year, int mon) const
+int Time::monthDays(long long year, long long mon) const
 {
     if (mon == 2)
         return 28 + isLeap(year);
@@ -92,7 +91,7 @@ bool Time::checkDate() const
 {
     if (m_year < 0 || m_mon < 1 || m_day < 1 || m_hour < 0 || m_min < 0)
         return false;
-    if (m_mon > 12 || m_day > monthDays() || m_hour > 23 || m_min > 59)
+    if (m_year > MAX_YEAR || m_mon > 12 || m_day > monthDays() || m_hour > 23 || m_min > 59)
         return false;
     return true;
 }
@@ -104,123 +103,136 @@ int Time::dayNumber() const
     return (year + year / 4 - year / 100 + year / 400 - year / 4000 + t[m_mon - 1] + m_day) % 7;
 }
 
-int Time::dayNumber(int year, int mon, int day) const
+int Time::dayNumber(long long year, long long mon, long long day) const
 {
-    static int t[] = {0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4};
+    static long long t[] = {0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4};
     year -= mon < 3;
     return (year + year / 4 - year / 100 + year / 400 - year / 4000 + t[mon - 1] + day) % 7;
 }
 
-int Time::countLeapYears(int year) const
+int Time::countLeapYears(long long year) const
 {
     return (year / 4 - year / 100 + year / 400 - year / 4000);
 }
 
-long long Time::toDays() const
+long long Time::toMinutes() const
 {
-    long long days = m_year * 365 + countLeapYears(m_year - 1);
+    long long minutes = m_year * YEAR + countLeapYears(m_year - 1) * DAY;
 
     for (int i = 1; i < m_mon; i++)
-        days += monthDays(m_year, i);
+        minutes += monthDays(m_year, i) * DAY;
 
-    return days + m_day;
+    return minutes + m_day * DAY;
 }
 
-void Time::toDate(long long days)
+void Time::toDate(long long minutes)
 {
-    m_year = 0;
+    m_year = m_hour = m_min = 0;
     m_mon = m_day = 1;
 
-    getYear(days);
-    adjust(days);
-    getMon(days);
-    m_day += days;
+    getYear(minutes);
+    adjustMinutes(minutes);
+    getMon(minutes);
+    getDays(minutes);
+    getHours(minutes);
+    m_min = minutes;
 }
 
-void Time::getYear(long long &days)
+void Time::getYear(long long &minutes)
 {
-    while ((days - toDays()) / 366)
+    while ((minutes - toMinutes()) / (LEAP_YEAR_DAYS*DAY))
     {
-        m_year += (days - toDays()) / 366;
+        m_year += (minutes - toMinutes()) / (LEAP_YEAR_DAYS*DAY);
     }
-    days -= toDays();
+    minutes -= toMinutes();
 }
 
-void Time::adjust(long long &days)
+void Time::getMon(long long &minutes)
 {
-    if (days == 365 && !isLeap(m_year))
+    while (minutes >= monthDays() * DAY)
     {
-        m_year++;
-        days = 0;
-    }
-}
-
-void Time::getMon(long long &days)
-{
-    while (days >= monthDays())
-    {
-        days -= monthDays();
+        minutes -= monthDays() * DAY;
         m_mon++;
     }
 }
 
-Time Time::operator+(int amount) const
+void Time::getDays(long long &minutes)
+{
+    m_day += minutes / DAY;
+    minutes %= DAY;
+}
+
+void Time::getHours(long long &minutes)
+{
+    m_hour = minutes / HOUR;
+    minutes %= HOUR;
+}
+
+void Time::adjustMinutes(long long &minutes)
+{
+    if (minutes >= YEAR && !isLeap(m_year))
+    {
+        m_year++;
+        minutes -= YEAR;
+    }
+}
+
+Time Time::operator+(long long amount) const
 {
     Time tmp;
 
     if (!amount)
         return *this;
 
-    tmp.toDate(toDays() + amount);
-    tmp.zeroTime();
+    tmp.toDate(toMinutes() + amount);
+    tmp.fixNegativeTime();
 
     return tmp;
 }
 
-Time Time::operator-(int amount) const
+Time Time::operator-(long long amount) const
 {
     Time tmp;
 
     if (!amount)
         return *this;
 
-    tmp.toDate(toDays() - amount);
-    tmp.zeroTime();
+    tmp.toDate(toMinutes() - amount);
+    tmp.fixNegativeTime();
 
     return tmp;
 }
 
-long long Time::operator-(const Time &rs) const {
-    return ((rs.toDays() - toDays()) * 24 + rs.m_hour - m_hour) * 60 + rs.m_min - m_min;
+long long Time::operator-(const Time &rs) const
+{
+    return toMinutes() - rs.toMinutes();
 }
 
-void Time::zeroTime()
+void Time::fixNegativeTime()
 {
-    if (m_day < 1)
+    if (m_day < 1 || m_hour < 0 || m_min < 0)
+    {
         m_day = 1;
+        m_hour = m_min = 0;
+    }
 }
 
 bool Time::isEvenWeek() const
 {
-    return !((toDays() % 14) / 7);
+    return !((toMinutes() % (2 * WEEK)) / WEEK);
 }
 
-void Time::adjustTime()
-{
-    if (m_min >= 60) {
-        m_hour += m_min / 60;
-        m_min %= 60;
-    }
-    if (m_hour >= 24) {
-        m_day += m_hour / 24;
-        m_hour %= 24;
-    }
-    if (m_day > monthDays()) {
-        m_day %= monthDays();
-        m_mon++;
-    }
-    if (m_mon > 12) {
-        m_year++;
-        m_mon %= 12;
-    }
-}
+// int main ()
+// {
+//     Time time;
+//     std::cout << time.toMinutes() << std::endl;
+//     std::cout << time.m_year << " " << time.m_mon << " " << time.m_day << " " << time.m_hour << " " << time.m_min << std::endl;
+//     time = time + 100;
+//     std::cout << time.m_year << " " << time.m_mon << " " << time.m_day << " " << time.m_hour << " " << time.m_min << std::endl;
+
+//     std::cout << time.dayNumber() << std::endl;
+//     time = time + DAY;
+//     std::cout << time.dayNumber() << std::endl;
+
+//     return 0;
+// }
