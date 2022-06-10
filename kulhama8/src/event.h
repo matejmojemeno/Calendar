@@ -22,7 +22,29 @@ public:
      * creates a new instance of event
      */
     Event(const Time &, const Time &, const std::string &, const std::string &, const std::vector<std::string> &, int);
-
+    /**
+     * @brief Construct a new Event object
+     * event copy constructor
+     */
+    Event(const Event &);
+    /**
+     * @brief Destroy the Event object
+     * virtual destructor of base class
+     */
+    virtual ~Event();
+    /**
+     * @brief 
+     * checks if all atributes of events are same
+     * @return true 
+     * @return false 
+     */
+    bool operator==(const Event &) const;
+    /**
+     * @brief 
+     * moves event to a new start
+     * adjusts end accordingly
+     */
+    void move(const Time &);
     /**
      * @brief 
      * displays just name and starting time of event
@@ -50,6 +72,4 @@ public:
     std::vector<std::string> participants;
     std::string name, place;
     int rep;
-private:
-    std::string getRep(int) const;
 };

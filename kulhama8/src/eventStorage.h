@@ -1,6 +1,6 @@
 #include <memory>
 #include <algorithm>
-#include "event.h"
+#include "monthlyEvent.h"
 
 #define ONE_DAY 1
 #define DAYS_IN_WEEK 7
@@ -22,32 +22,43 @@ public:
     std::vector<Event> dayEvents(const Time &) const;
     /**
      * @brief 
-     * finds event with given name
+     * finds all events with given name
      */
-    void findName(const std::string &, bool &, Event &) const;
+    std::vector<std::shared_ptr<Event>> findName(const std::string &) const;
+    /**
+     * @brief 
+     * finds all events with given name
+     */
+    std::vector<std::shared_ptr<Event>> findPlace(const std::string &) const;
     /**
      * @brief 
      * removes event with given name if exists
      */
-    void removeEvent(const std::string &);
+    void removeEvent(const std::shared_ptr<Event>);
     /**
      * @brief 
      * moves event to a new date
      */
-    void moveEvent(const Event &, const Time &);
+    bool moveEvent(std::shared_ptr<Event>, const Time &);
     /**
      * @brief 
      * vectors to store all events
      */
-    std::vector<Event> allEvents;
-    std::vector<Event> eventsByStart;
-    std::vector<Event> eventsByEnd;
-    std::vector<Event> dailyEvents;
-    std::vector<Event> weeklyEvents;
-    std::vector<Event> twoWeeklyEvents;
-    std::vector<Event> monthlyEvents;
+    std::vector<std::shared_ptr<Event>> allEvents;
+    std::vector<std::shared_ptr<OneTimeEvent>> eventsByStart;
+    std::vector<std::shared_ptr<OneTimeEvent>> eventsByEnd;
 
 private:
+    /**
+     * @brief 
+     * adds one time event to the storage
+     */
+    void addOneTime(const OneTimeEvent &);
+    /**
+     * @brief 
+     * adds repeated event to the storage
+     */
+    void addRep(const Event &);
     /**
      * @brief 
      * check if event can be added
@@ -61,42 +72,37 @@ private:
      * @return true 
      * @return false 
      */
-    bool checkDate(const Event &) const;
-    /**
-     * @brief 
-     * check if name of event doesnt collide with other events
-     * @return true 
-     * @return false 
-     */
-    bool checkName(const std::string &) const;
+    bool checkDate(const OneTimeEvent &) const;
     /**
      * @brief 
      * finds new starting date to event
      * @return Time 
      */
-    Time findNewDate(const Event &) const;
+    Time findNewStart(const OneTimeEvent &) const;
     /**
      * @brief 
-     * removes event from vector without repetition
+     * finds the next closest start after some date
+     * @return Time 
      */
-    void removeNoRep(const std::string &);
+    Time nextStart(const Time &) const;
     /**
      * @brief 
-     * removes event from repetition vectors
-     */
-    void removeRep(const std::string &, std::vector<Event> &);
-    /**
-     * @brief 
-     * requests a new name for event
-     */
-    void newName(const Event &);
-    /**
-     * @brief 
-     * iterates all events to check dates
+     * asks user if he wants to move event
      * @return true 
      * @return false 
      */
-    bool iterateEvents(const Event &, const std::vector<Event> &) const;
+    bool wantNewDate() const;
+    /**
+     * @brief 
+     * removes event from vector of all events
+     */
+    void removeAll(const std::shared_ptr<Event>);
+    /**
+     * @brief 
+     * removes event from sorted vectors
+     */
+    void removeByStart(const Event &);
+    void removeByEnd(const Event &);
     /**
      * @brief 
      * check if two events collide
@@ -108,29 +114,15 @@ private:
      * @brief 
      * inserts event
      */
-    void insert(const Event &);
+    void insertNoRep(const Event &);
     /**
      * @brief 
      * inserts event while sorting based on start of event
      */
-    void insertStart(const Event &);
+    void insertByStart(const std::shared_ptr<OneTimeEvent> &);
     /**
      * @brief 
      * inserts event while sorting based on end of event
      */
-    void insertEnd(const Event &);
-    /**
-     * @brief 
-     * inserts repeated event
-     */
-    void insertRepeated(const Event &);
-    /**
-     * @brief 
-     * functions called by dayEvents
-     */
-    void sameDay(std::vector<Event> &, const Time &) const;
-    void sameDayReps(std::vector<Event> &, const Time &) const;
-    void sameWeekReps(std::vector<Event> &, const Time &) const;
-    void sameTwoWeekReps(std::vector<Event> &, const Time &) const;
-    void sameMonthReps(std::vector<Event> &, const Time &) const;
+    void insertByEnd(const std::shared_ptr<OneTimeEvent> &);
 };

@@ -24,6 +24,29 @@ Event::Event(const Time &s, const Time &e, const std::string &n, const std::stri
         rep = 0;
 }
 
+Event::Event(const Event &event)
+{
+    start = event.start;
+    end = event.end;
+    name = event.name;
+    place = event.place;
+    participants = event.participants;
+    rep = event.rep;
+}
+
+Event::~Event() = default;
+
+bool Event::operator==(const Event &event) const
+{
+    return std::tie(start, end, name, place, participants, rep) == std::tie(event.start, event.end, event.name, event.place, event.participants, event.rep);
+}
+
+void Event::move(const Time &newStart)
+{
+    end = end + (newStart - start);
+    start = newStart;
+}
+
 void Event::displaySmall(int line, bool highlighted) const
 {
     if (highlighted)
@@ -37,19 +60,18 @@ void Event::displaySmall(int line, bool highlighted) const
 int Event::displayFull() const 
 {
     clear();
-    move(0, 0);
+    //move(0, 0);
 
     printw(name.c_str());
     printw(", ");
     printw(place.c_str());
     mvprintw(1, 0, "Start: %02d.%02d.%d %02d:%02d", start.m_day, start.m_mon, start.m_year, start.m_hour, start.m_min);
     mvprintw(2, 0, "End: %02d.%02d.%d %02d:%02d", end.m_day, end.m_mon, end.m_year, end.m_hour, end.m_min);
-    move(3, 0);
+    //move(3, 0);
     for (auto person : participants) {
         printw("%s, ", person.c_str());
     }
-    move(4, 0);
-    printw("Repetition: %s", getRep(rep).c_str());
+    //move(4, 0);
     printw("\nPress 1 - export, 2 - remove, 3 - move");
 
     int c = getch();
@@ -68,7 +90,7 @@ int Event::displayFull() const
 }
 
 void Event::exportEvent() const {
-    std::ofstream f("out/" + name + ".txt");
+    std::ofstream f("examples/" + name + ".txt");
 
     if (! f.is_open() || ! f.good())
         throw std::invalid_argument("Cannot write into file.");
@@ -80,19 +102,4 @@ void Event::exportEvent() const {
     f << "participants = ";
     for (auto person : participants)
         f << person << ", ";
-    f << "\n" << getRep(rep);
-}
-
-std::string Event::getRep(int rep) const {
-    if (rep == 0)
-        return "never";
-    if (rep == 1)
-        return "every day";
-    if (rep == 2)
-        return "every week";
-    if (rep == 3)
-        return "every 14 days";
-    if (rep == 4)
-        return "every month";
-    return "never";
 }
