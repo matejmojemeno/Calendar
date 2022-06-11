@@ -2,61 +2,53 @@
 
 const std::array<std::string, 5> EventWrapper::repMenu = {" Never ", " Every day ", " Every week ", " Every two weeks ", " Every month "};
 
-void EventWrapper::getEvent()
+void EventWrapper::newEvent()
 {
     clear();
-    move(0, 0);
-    printw("Enter an event:");
-    Time start = getStart(), end = getEnd();
-    checkEventTime(start, end);
-    std::string name = getName(), place = getPlace();
-    std::vector<std::string> participants = getParticipants();
-    int rep = getRepetition();
+    mvprintw(0, 0, "Enter an event:");
 
-    Event event(start, end, name, place, participants, rep);
-    storage.addEvent(event);
+    try
+    {
+        OneTimeEvent event = OneTimeEvent(getStart(), getEnd(), getName(), getPlace(), getParticipants(), getRepetition());
+        storage.addEvent(event);
+
+    }
+    catch (std::invalid_argument &ia)
+    {
+        showError(ia);
+        return;
+    }
+
 }
 
 Time EventWrapper::getStart() const
 {
     mvprintw(1, 0, "Start of the event: ");
-    Time time = p.parseDate();
-
-    return time;
+    return p.parseDate();
 }
 
 Time EventWrapper::getEnd() const
 {
     printw("End of the event: ");
-
     return p.parseDate();
 }
 
 std::string EventWrapper::getName() const
 {
     printw("Name of the event: ");
-
     return p.getString();
 }
 
 std::string EventWrapper::getPlace() const
 {
     printw("Place of the event: ");
-
     return p.getString();
 }
 
 std::vector<std::string> EventWrapper::getParticipants() const
 {
     printw("Participants: ");
-
     return p.parseParticipants();
-}
-
-void EventWrapper::checkEventTime(const Time &start, const Time &end) const
-{
-    if (end < start)
-        throw std::invalid_argument("Event cannot end before it started.");
 }
 
 void EventWrapper::resetLine() const
@@ -67,9 +59,9 @@ void EventWrapper::resetLine() const
     clrtoeol();
 }
 
-void EventWrapper::drawRepMenu(const int pos) const
+void EventWrapper::drawRepMenu(size_t pos) const
 {
-    for (int i = 0; i < 5; i++)
+    for (size_t i = 0; i < repMenu.size(); i++)
     {
         if (i == pos)
             attron(COLOR_PAIR(1));
@@ -80,13 +72,14 @@ void EventWrapper::drawRepMenu(const int pos) const
 
 int EventWrapper::getRepetition() const
 {
-    int pos = 0;
+    size_t pos = 0;
     drawRepMenu(0);
 
     int c = getch();
     while (c != 10)
     {
-        updatePos(c, pos);
+        refresh();
+        updatePos(c, pos, repMenu.size());
         resetLine();
         drawRepMenu(pos);
 
@@ -96,17 +89,17 @@ int EventWrapper::getRepetition() const
     return pos;
 }
 
-void EventWrapper::updatePos(const int c, int &pos) const
+void EventWrapper::updatePos(int c, size_t &pos, const size_t &menuSize) const
 {
     if (c == KEY_LEFT)
-        pos--;
+        pos += menuSize - 1;
     else if (c == KEY_RIGHT)
         pos++;
 
-    pos = (pos + 5) % 5;
+    pos = pos % menuSize;
 }
 
-void EventWrapper::getFileEvent()
+void EventWrapper::newFileEvent()
 {
     clear();
     move(0, 0);
@@ -160,8 +153,19 @@ void EventWrapper::getFileEvent()
     if (!(startFlag && endFlag && nameFlag && placeFlag && partFlag && repFlag))
         throw std::invalid_argument("Invalid file format.");
 
-    Event event(start, end, name, place, participants, rep);
-    storage.addEvent(event);
+    std::shared_ptr<Event> event;
+
+    try
+    {
+        // event = std::make_shared<Event>(start, end, name, place, participants, rep);
+    }
+    catch (std::invalid_argument &ia)
+    {
+        showError(ia);
+        return;
+    }
+
+    //storage.addEvent(event);
 }
 
 Time EventWrapper::getFileTime(std::ifstream &file) const
@@ -226,43 +230,53 @@ bool EventWrapper::checkChar(std::ifstream &file, char c) const
     return true;
 }
 
-void EventWrapper::manageEvent()
+void EventWrapper::showError(std::invalid_argument &ia) const
 {
-    Event event;
-    Parser p;
-    bool found = false;
-    refresh();
     clear();
-    move(0, 0);
-    printw("Enter a name: ");
-    std::string name = p.getString();
-    storage.findName(name, found, event);
-    clear();
-    if (found)
-        doOperation(event.displayFull(), event, name);
-    else
+    mvprintw(0, 0, "%s\n Press a key to continue.", ia.what());
+    getch();
+}
+
+std::vector<std::shared_ptr<Event>> EventWrapper::eventsByName() const
+{
+    std::string name = getName();
+    return storage.findName(name);
+}
+
+std::vector<std::shared_ptr<Event>> EventWrapper::eventsByPlace() const
+{
+    std::string place = getPlace();
+    return storage.findPlace(place);
+}
+
+void EventWrapper::manageEvents(std::vector<std::shared_ptr<Event>> &events)
+{
+    size_t pos = 0, c = 0;
+    while (c != 4)
     {
-        printw("Name not found. Press a key to continue.");
-        getch();
+        events[pos]->displayFull();
+        printw("1 - move event, 2 - remove event, 3 - export event.");
+        int c = getch();
         clear();
+        updatePos(c, pos, events.size());
+        if (callFunc(events[pos], c))
+            return;
     }
 }
 
-void EventWrapper::doOperation(int op, const Event &event, const std::string &name)
+bool EventWrapper::callFunc(std::shared_ptr<Event> event, int c)
 {
-    if (!op)
-        return;
-    else if (op == '1')
-        event.exportEvent();
-    else if (op == '2')
-        storage.removeEvent(name);
-    else if (op == '3')
+    if (c == '1')
     {
-        refresh();
-        clear();
-        Time newStart = getStart();
-        Event copy(event);
-        storage.removeEvent(event.name);
-        storage.moveEvent(copy, newStart);
+        Time time = getStart();
+        storage.moveEvent(event, time);
     }
+    else if (c == '2')
+        storage.removeEvent(event);
+    else if (c == '3')
+        event->exportEvent();
+    else
+        return false;
+
+    return true;
 }

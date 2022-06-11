@@ -72,4 +72,6 @@ public:
     std::vector<std::string> participants;
     std::string name, place;
     int rep;
+
+    static const std::array<long long, 4> repLenghts;
 };

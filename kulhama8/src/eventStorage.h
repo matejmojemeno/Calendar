@@ -13,7 +13,7 @@ public:
      * @brief 
      * adds new event
      */
-    void addEvent(const Event &);
+    void addEvent(Event &);
     /**
      * @brief 
      * returns all events happening on given day

@@ -9,6 +9,12 @@ Event::Event()
     place = "";
     participants = emptyVector;
     rep = 0;
+
+    if (end < start)
+        throw std::invalid_argument("Event cannot end before it started.");
+    if (rep != NEVER)
+        if (end - start > repLenghts[rep - 1])
+            throw std::invalid_argument("Event collides with itself.");
 }
 
 Event::Event(const Time &s, const Time &e, const std::string &n, const std::string &p, const std::vector<std::string> &part, int r)
@@ -103,3 +109,5 @@ void Event::exportEvent() const {
     for (auto person : participants)
         f << person << ", ";
 }
+
+const std::array<long long, 4> Event::repLenghts = {DAY, WEEK, 2*WEEK, 4*WEEK};

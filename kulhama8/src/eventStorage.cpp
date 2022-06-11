@@ -1,6 +1,6 @@
 #include "eventStorage.h"
 
-void EventStorage::addEvent(const Event &event)
+void EventStorage::addEvent(Event &event)
 {
     if (event.rep == NEVER)
         addOneTime(event);
@@ -52,8 +52,7 @@ void EventStorage::insertByStart(const std::shared_ptr<OneTimeEvent> &event)
     else
     {
         eventsByStart.insert(std::upper_bound(eventsByStart.begin(), eventsByStart.end(), event, [](std::shared_ptr<OneTimeEvent> ls, std::shared_ptr<OneTimeEvent> rs)
-                                              { return ls->start < rs->start; }),
-                             event);
+                                              { return ls->start < rs->start; }), event);
     }
 }
 
@@ -64,8 +63,7 @@ void EventStorage::insertByEnd(const std::shared_ptr<OneTimeEvent> &event)
     else
     {
         eventsByEnd.insert(std::upper_bound(eventsByEnd.begin(), eventsByEnd.end(), event, [](std::shared_ptr<OneTimeEvent> ls, std::shared_ptr<OneTimeEvent> rs)
-                                            { return ls->end < rs->end; }),
-                           event);
+                                            { return ls->end < rs->end; }), event);
     }
 }
 
@@ -79,7 +77,7 @@ bool EventStorage::checkDate(const OneTimeEvent &event) const
 
 Time EventStorage::findNewStart(const OneTimeEvent &event) const
 {
-    for (auto i = 0; i < eventsByEnd.size() - 1; i++)
+    for (size_t i = 0; i < eventsByEnd.size() - 1; i++)
     {
         Time newStart = eventsByEnd[i]->end + 1;
         if (newStart == eventsByEnd[i + 1]->end || newStart < event.start)
@@ -109,7 +107,7 @@ std::vector<std::shared_ptr<Event>> EventStorage::findName(const std::string &na
         if (event->name == name)
             sameNameEvents.push_back(event);
 
-    sort(sameNameEvents.begin(), sameNameEvents.end(), [](const Event *ls, const Event *rs)
+    sort(sameNameEvents.begin(), sameNameEvents.end(), [](const std::shared_ptr<Event> ls, const std::shared_ptr<Event> rs)
          { return ls->start < rs->start; });
 
     return sameNameEvents;
@@ -123,7 +121,7 @@ std::vector<std::shared_ptr<Event>> EventStorage::findPlace(const std::string &p
         if (event->place == place)
             samePlaceEvents.push_back(event);
 
-    sort(samePlaceEvents.begin(), samePlaceEvents.end(), [](const Event *ls, const Event *rs)
+    sort(samePlaceEvents.begin(), samePlaceEvents.end(), [](const std::shared_ptr<Event> ls, const std::shared_ptr<Event> rs)
          { return ls->start < rs->start; });
 
     return samePlaceEvents;

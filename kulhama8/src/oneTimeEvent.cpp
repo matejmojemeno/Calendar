@@ -1,5 +1,8 @@
 #include "oneTimeEvent.h"
 
+OneTimeEvent::OneTimeEvent(const Time &s, const Time &e, const std::string &n, const std::string &p, const std::vector<std::string> &part, int r)
+                : Event(s, e, n, p, part, r) {}
+
 OneTimeEvent::OneTimeEvent(const Event &event) : Event(event){}
 
 bool OneTimeEvent::isSameDay(const Time &time) const
