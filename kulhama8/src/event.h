@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <memory>
 #include "stringParser.h"
 
 #define NEVER 0
@@ -72,6 +73,4 @@ public:
     std::vector<std::string> participants;
     std::string name, place;
     int rep;
-
-    static const std::array<long long, 4> repLenghts;
 };

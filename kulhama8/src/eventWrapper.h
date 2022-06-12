@@ -1,6 +1,7 @@
 #include <iostream>
 #include <array>
 #include <algorithm>
+#include <functional>
 
 #include "eventStorage.h"
 
@@ -14,7 +15,9 @@ public:
     std::vector<std::shared_ptr<Event>> eventsByPlace() const;
 
     EventStorage storage;
+
 private:
+    void callAddEvent(const Time &, const Time &, const std::string &, const std::string &, const std::vector<std::string> &, int);
     Time getStart() const;
     Time getEnd() const;
     std::string getName() const;
@@ -34,5 +37,4 @@ private:
 
     Parser p;
     static const std::array<std::string, 5> repMenu;
-    static const std::array<std::function<void>, 5> eventTypes;
 };

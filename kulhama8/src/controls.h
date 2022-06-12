@@ -7,6 +7,10 @@
 #define ERROR COLOR_PAIR(3)
 #define BLUE COLOR_PAIR(4)
 
+/**
+ * @brief 
+ * class to make basic ncurses instructions
+ */
 class Controls {
 public:
     /**

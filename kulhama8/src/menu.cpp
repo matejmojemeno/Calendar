@@ -1,52 +1,44 @@
 #include "menu.h"
 
-const std::array<const char *, 4> Menu::menuItems = {"Calendar", "Week calendar", "Events", "Exit"};
-const std::array<const char *, 4> Menu::eventItems = {"Add event", "Import event", "Find event by name", "Back"};
+const std::vector<const char *> Menu::menuItems = {"Calendar", "Events", "Exit"};
+const std::vector<const char *> Menu::eventItems = {"Add event", "Import event", "Find event by name", "Find event by place", "Back"};
 
-void Menu::startMenu () 
+int Menu::menu(const std::vector<const char *> &menu) const
 {
-    displayMenu(menuItems, 0);
+    displayMenu(menu, 0);
     int c = getch(), pos = 0;
 
-    while (c != 4) {
-        if (c == '\n' && pos == 3)
-            break;
+    while (c != 4)
+    {
         if (c == '\n')
-            callFunc(pos);
-    
-        updatePos(c, pos);
+            return pos;
+
+        updatePos(c, pos, menu.size());
         refresh();
-        displayMenu(menuItems, pos);
-        
-        c = getch();
-    }
-} 
-
-void Menu::eventMenu()
-{
-    displayMenu(eventItems, 0);
-    int c = getch(), pos = 0;
-
-    while (c != 4) {
-        if (c == '\n' && pos == 3)
-            break;
-        if (c == '\n')
-            callEventFunc(pos);
-
-        updatePos(c, pos);
-        refresh();
-        
-        displayMenu(eventItems, pos);
+        displayMenu(menu, pos);
 
         c = getch();
     }
+
+    return '\n';
 }
 
-void Menu::displayMenu(const std::array<const char *, 4> menu, int pos) const
+int Menu::mainMenu() const
+{
+    return menu(menuItems);
+}
+
+int Menu::eventMenu() const
+{
+    return menu(eventItems);
+}
+
+void Menu::displayMenu(const std::vector<const char *> menu, int pos) const
 {
     clear();
-    int max = (int) menu.size();
-    for (int i = 0; i < max; i++) {
+    int max = static_cast<int>(menu.size());
+    for (int i = 0; i < max; i++)
+    {
         if (i == pos)
             attron(HIGHLIGHT);
         mvprintw(i, 0, menu[i]);
@@ -54,60 +46,11 @@ void Menu::displayMenu(const std::array<const char *, 4> menu, int pos) const
     }
 }
 
-void Menu::updatePos(int c, int &pos) 
+void Menu::updatePos(int c, int &pos, size_t menuSize) const
 {
     if (c == KEY_UP)
         pos--;
     else if (c == KEY_DOWN)
         pos++;
-    pos = (pos + 4) % 4;
-}
-
-void Menu::callFunc(int pos) {
-    Time time;
-    if (pos == 0)
-        d.controlDisplay(time, events.storage);
-    else if (pos == 1)
-        w.controlDisplay(time, events.storage);
-    else if (pos == 2)
-        eventMenu();
-}
-
-void Menu::callEventFunc(int pos) {
-    if (pos == 0) {
-        try {
-            events.getEvent();}
-        catch (std::invalid_argument &i) {
-            exception(i);
-        }
-    }
-    else if (pos == 1)
-        try {
-            events.getFileEvent();}
-        catch (std::invalid_argument &i) {
-            exception(i);
-        }
-    else if (pos == 2)
-        try {
-            events.manageEvent();}
-        catch (std::invalid_argument &i) {
-            exception(i);
-        }
-}
-
-void Menu::exception(std::invalid_argument &i) const {
-    clear();
-    attron(ERROR);
-    mvprintw(0, 0, i.what());
-    printw(" Press a key to continue.");
-    int c = getch();
-    while (c == 410) {
-        refresh();
-        clear();
-        mvprintw(0, 0, i.what());
-        printw(" Press a key to continue.");
-
-        c = getch();
-    }
-    attroff(ERROR);
+    pos = (pos + static_cast<int>(menuSize)) % static_cast<int>(menuSize);
 }

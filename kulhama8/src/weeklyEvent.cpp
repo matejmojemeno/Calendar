@@ -1,5 +1,12 @@
 #include "weeklyEvent.h"
 
+WeeklyEvent::WeeklyEvent(const Time &s, const Time &e, const std::string &n, const std::string &p, const std::vector<std::string> &part, int r)
+                : Event(s, e, n, p, part, r) 
+{
+    if (e - s > WEEK)
+        throw std::invalid_argument("Event collides with iteself.");
+}
+
 WeeklyEvent::WeeklyEvent(const Event &event) : Event(event){}
 
 bool WeeklyEvent::isSameDay(const Time &time) const 

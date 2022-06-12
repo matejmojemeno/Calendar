@@ -1,5 +1,12 @@
 #include "twoWeeklyEvent.h"
 
+TwoWeeklyEvent::TwoWeeklyEvent(const Time &s, const Time &e, const std::string &n, const std::string &p, const std::vector<std::string> &part, int r)
+                : Event(s, e, n, p, part, r) 
+{
+    if (e - s > 2*WEEK)
+        throw std::invalid_argument("Event collides with iteself.");
+}
+
 TwoWeeklyEvent::TwoWeeklyEvent(const Event &event) : Event(event){}
 
 bool TwoWeeklyEvent::isSameDay(const Time &time) const 

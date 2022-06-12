@@ -5,13 +5,15 @@ const std::array<std::string, 5> EventWrapper::repMenu = {" Never ", " Every day
 void EventWrapper::newEvent()
 {
     clear();
-    mvprintw(0, 0, "Enter an event:");
+    mvprintw(0, 0, "Enter an event:"); 
 
     try
     {
-        OneTimeEvent event = OneTimeEvent(getStart(), getEnd(), getName(), getPlace(), getParticipants(), getRepetition());
-        storage.addEvent(event);
-
+        Time start = getStart(), end = getEnd();
+        std::string name = getName(), place = getPlace();
+        std::vector<std::string> participants = getParticipants();
+        int rep = getRepetition();
+        callAddEvent(start, end, name, place, participants, rep);
     }
     catch (std::invalid_argument &ia)
     {
@@ -19,6 +21,30 @@ void EventWrapper::newEvent()
         return;
     }
 
+}
+
+void EventWrapper::callAddEvent(const Time &start, const Time &end, const std::string &name, const std::string &place, const std::vector<std::string> &participants, int rep)
+{
+    if (rep == NEVER) {
+        OneTimeEvent event = OneTimeEvent(start, end, name, place, participants, rep); 
+        storage.addEvent(event);
+    }
+    else if (rep == DAILY) {
+        DailyEvent event = DailyEvent(start, end, name, place, participants, rep); 
+        storage.addEvent(event);
+    }
+    else if (rep == WEEKLY) {
+        WeeklyEvent event = WeeklyEvent(start, end, name, place, participants, rep); 
+        storage.addEvent(event);
+    }
+    else if (rep == TWOWEEKLY) {
+        TwoWeeklyEvent event = TwoWeeklyEvent(start, end, name, place, participants, rep); 
+        storage.addEvent(event);
+    }
+    else if (rep == MONTHLY) {
+        MonthlyEvent event = MonthlyEvent(start, end, name, place, participants, rep); 
+        storage.addEvent(event);
+    }
 }
 
 Time EventWrapper::getStart() const
@@ -153,11 +179,9 @@ void EventWrapper::newFileEvent()
     if (!(startFlag && endFlag && nameFlag && placeFlag && partFlag && repFlag))
         throw std::invalid_argument("Invalid file format.");
 
-    std::shared_ptr<Event> event;
-
     try
     {
-        // event = std::make_shared<Event>(start, end, name, place, participants, rep);
+        callAddEvent(start, end, name, place, participants, rep);
     }
     catch (std::invalid_argument &ia)
     {

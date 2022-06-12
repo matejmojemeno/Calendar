@@ -1,4 +1,5 @@
 #include <array>
+#include <map>
 #include <string>
 #include <ncurses.h>
 
@@ -8,48 +9,34 @@ class Menu
 {
 public:
     /**
-     * @brief 
+     * @brief
      * start menu
      */
-    void startMenu();
+    int mainMenu() const;
     /**
-     * @brief 
+     * @brief
      * menu to manage events
      */
-    void eventMenu();
-    /**
-     * @brief 
-     * prints menu to screen
-     */
-    void displayMenu(const std::array<const char *, 4>, int) const;
-    /**
-     * @brief 
-     * updates position if out of interval
-     */
-    void updatePos(int, int &);
-
-    /**
-     * @brief 
-     * displays an error messaage
-     */
-    void exception(std::invalid_argument &) const;
+    int eventMenu() const;
 
 private:
     /**
-     * @brief 
-     * calls function picked in start menu
+     * @brief
+     * function to operate chosen menu
+     * @return int
      */
-    void callFunc(int);
+    int menu(const std::vector<const char *> &) const;
     /**
-     * @brief 
-     * calls function picked in event menu
+     * @brief
+     * prints menu to screen
      */
-    void callEventFunc(int);
+    void displayMenu(const std::vector<const char *>, int) const;
+    /**
+     * @brief
+     * updates position if out of interval
+     */
+    void updatePos(int, int &, size_t) const;
 
-    static const std::array<const char *, 4> menuItems;
-    static const std::array<const char *, 4> eventItems;
-
-    DisplayMonth d;
-    DisplayWeek w;
-    EventWrapper events;
+    static const std::vector<const char *> menuItems;
+    static const std::vector<const char *> eventItems;
 };
