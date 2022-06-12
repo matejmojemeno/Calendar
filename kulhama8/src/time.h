@@ -4,12 +4,7 @@
 #include <stdexcept>
 #include <iostream>
 
-#define YEAR 525600ll
-#define WEEK 10080ll
-#define DAY 1440ll
-#define HOUR 60ll
-#define LEAP_YEAR_DAYS 366ll
-#define MAX_YEAR 2000000000ll
+#include "constants.h"
 
 class Time
 {

@@ -5,16 +5,14 @@ class DisplayMonth : public Display
 public:
     /**
      * @brief 
+     * displays all components together
+     */
+    void display(const Time &, const EventStorage &) const override;
+    /**
+     * @brief 
      * displays all days of month
      */
     void displayDays(const Time &) const override;
-
-    /**
-     * @brief 
-     * controls displayed days
-     */
-    void controlDisplay(Time &, const EventStorage &) const override;
-
 private:
     DisplayDay day;
 };

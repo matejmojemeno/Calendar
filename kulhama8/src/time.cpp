@@ -122,7 +122,7 @@ long long Time::toMinutes() const
     for (int i = 1; i < m_mon; i++)
         minutes += monthDays(m_year, i) * DAY;
 
-    return minutes + m_day * DAY;
+    return minutes + m_day * DAY + m_hour * HOUR + m_min;
 }
 
 void Time::toDate(long long minutes)
@@ -140,9 +140,9 @@ void Time::toDate(long long minutes)
 
 void Time::getYear(long long &minutes)
 {
-    while ((minutes - toMinutes()) / (LEAP_YEAR_DAYS*DAY))
+    while ((minutes - toMinutes()) / (LEAP_YEAR_DAYS * DAY))
     {
-        m_year += (minutes - toMinutes()) / (LEAP_YEAR_DAYS*DAY);
+        m_year += (minutes - toMinutes()) / (LEAP_YEAR_DAYS * DAY);
     }
     minutes -= toMinutes();
 }

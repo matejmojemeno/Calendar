@@ -56,10 +56,24 @@ void Calendar::callEventMenuFunc(int item)
 {
     if (item == ADD)
         events.newEvent();
-    else if (item == IMPORT)
-        events.newFileEvent();
-    else if (item == FIND_NAME)
-        events.eventsByName();
-    else if (item == FIND_PLACE)
-        events.eventsByPlace();
+    else if (item == IMPORT) {
+        try {
+            events.newFileEvent();
+        }
+        catch(std::invalid_argument &ia) {
+            clear();
+            printw("Invalid file format.\nPress a key to continue.");
+            getch();
+            clear();
+        }
+    }
+    else if (item == FIND_NAME) {
+        std::vector<std::shared_ptr<Event>> nameEvents = events.eventsByName();
+        events.manageEvents(nameEvents);
+    }
+    else if (item == FIND_PLACE) {
+        std::vector<std::shared_ptr<Event>> placeEvents = events.eventsByPlace();
+        events.manageEvents(placeEvents);
+    }
+        
 }

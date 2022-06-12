@@ -15,13 +15,13 @@ void Display::displayHeader(const Time& time) const
 void Display::displayDayNames() const
 {
     for (int i = 0; i < 7; i++)
-        mvprintw(1, i*4 + 3, days[i]);
+        mvprintw(1, i*DAY_SIZE + OFFSET, days[i]);
 }
 
-void Display::display(const Time &time) const
-{   
-    clear();
-    displayHeader(time);
-    displayDayNames();
-    displayDays(time);
+void Display::displayEvents(const Time &time, const EventStorage &events) const
+{
+    std::vector<std::shared_ptr<Event>> eventsList = events.dayEvents(time);
+
+    for (size_t i = 0; i < eventsList.size(); i++)
+        eventsList[i]->displaySmall(i + OFFSET);
 }

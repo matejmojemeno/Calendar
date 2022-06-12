@@ -12,18 +12,23 @@ bool OneTimeEvent::isSameDay(const Time &time) const
 
 bool OneTimeEvent::intersectEvent(const Event &event) const 
 {
-    if (event.start <= start && end <= event.end)
+    if (event.start <= start && start <= event.end)
         return true;
     if (event.start <= end && end <= event.end)
+        return true;
+    if (start <= event.start && event.start <= end)
+        return true;
+    if (start <= event.end && event.end <= end)
         return true;
     return false;
 }
 
 bool OneTimeEvent::wantToMove(const Time &newStart) const
 {
+    clear();
     printRequest(newStart);
     int c = getch();
-    while(c != '1' || c != '2')
+    while(c != '1' && c != '2')
     {
         clear();
         refresh();

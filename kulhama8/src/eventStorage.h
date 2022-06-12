@@ -2,10 +2,6 @@
 #include <algorithm>
 #include "monthlyEvent.h"
 
-#define ONE_DAY 1
-#define DAYS_IN_WEEK 7
-#define DAYS_IN_TWOWEEKS 14
-
 class EventStorage
 {
 public:

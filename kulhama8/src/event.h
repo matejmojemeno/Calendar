@@ -50,7 +50,7 @@ public:
      * @brief 
      * displays just name and starting time of event
      */
-    void displaySmall(int, bool) const;
+    void displaySmall(int) const;
     /**
      * @brief 
      * displays everything about event

@@ -5,7 +5,7 @@ const std::array<std::string, 5> EventWrapper::repMenu = {" Never ", " Every day
 void EventWrapper::newEvent()
 {
     clear();
-    mvprintw(0, 0, "Enter an event:"); 
+    mvprintw(0, 0, "Enter an event:\n"); 
 
     try
     {
@@ -17,7 +17,7 @@ void EventWrapper::newEvent()
     }
     catch (std::invalid_argument &ia)
     {
-        showError(ia);
+        showError(ia.what());
         return;
     }
 
@@ -25,11 +25,7 @@ void EventWrapper::newEvent()
 
 void EventWrapper::callAddEvent(const Time &start, const Time &end, const std::string &name, const std::string &place, const std::vector<std::string> &participants, int rep)
 {
-    if (rep == NEVER) {
-        OneTimeEvent event = OneTimeEvent(start, end, name, place, participants, rep); 
-        storage.addEvent(event);
-    }
-    else if (rep == DAILY) {
+    if (rep == DAILY) {
         DailyEvent event = DailyEvent(start, end, name, place, participants, rep); 
         storage.addEvent(event);
     }
@@ -45,11 +41,16 @@ void EventWrapper::callAddEvent(const Time &start, const Time &end, const std::s
         MonthlyEvent event = MonthlyEvent(start, end, name, place, participants, rep); 
         storage.addEvent(event);
     }
+    else 
+    {
+        OneTimeEvent event = OneTimeEvent(start, end, name, place, participants, rep); 
+        storage.addEvent(event);
+    }
 }
 
 Time EventWrapper::getStart() const
 {
-    mvprintw(1, 0, "Start of the event: ");
+    printw("Start of the event: ");
     return p.parseDate();
 }
 
@@ -137,8 +138,10 @@ void EventWrapper::newFileEvent()
 
     std::ifstream f(fileName);
 
-    if (!f.is_open() || !f.good())
-        throw std::invalid_argument("Please, enter a valid file.");
+    if (!f.is_open() || !f.good()) {
+        showError("Couldn't open file.");
+        return;
+    }
 
     while (f >> key)
     {
@@ -172,12 +175,16 @@ void EventWrapper::newFileEvent()
             rep = getFileRep(f);
             repFlag = true;
         }
-        else
-            throw std::invalid_argument("Invalid file format.");
+        else {
+            showError("Wrong file format.");
+            return;
+        }
     }
 
-    if (!(startFlag && endFlag && nameFlag && placeFlag && partFlag && repFlag))
-        throw std::invalid_argument("Invalid file format.");
+    if (!(startFlag && endFlag && nameFlag && placeFlag && partFlag && repFlag)) {
+        showError("Wrong file format.");
+        return;
+    }
 
     try
     {
@@ -185,11 +192,8 @@ void EventWrapper::newFileEvent()
     }
     catch (std::invalid_argument &ia)
     {
-        showError(ia);
-        return;
+        showError(ia.what());
     }
-
-    //storage.addEvent(event);
 }
 
 Time EventWrapper::getFileTime(std::ifstream &file) const
@@ -254,21 +258,23 @@ bool EventWrapper::checkChar(std::ifstream &file, char c) const
     return true;
 }
 
-void EventWrapper::showError(std::invalid_argument &ia) const
+void EventWrapper::showError(const char * error) const
 {
     clear();
-    mvprintw(0, 0, "%s\n Press a key to continue.", ia.what());
+    mvprintw(0, 0, "%s\nPress a key to continue.", error);
     getch();
 }
 
 std::vector<std::shared_ptr<Event>> EventWrapper::eventsByName() const
 {
+    clear();
     std::string name = getName();
     return storage.findName(name);
 }
 
 std::vector<std::shared_ptr<Event>> EventWrapper::eventsByPlace() const
 {
+    clear();
     std::string place = getPlace();
     return storage.findPlace(place);
 }
@@ -276,14 +282,18 @@ std::vector<std::shared_ptr<Event>> EventWrapper::eventsByPlace() const
 void EventWrapper::manageEvents(std::vector<std::shared_ptr<Event>> &events)
 {
     size_t pos = 0, c = 0;
+    if (events.empty()) {
+        showError("No events found.");
+        return;
+    }
+
     while (c != 4)
     {
         events[pos]->displayFull();
-        printw("1 - move event, 2 - remove event, 3 - export event.");
         int c = getch();
         clear();
         updatePos(c, pos, events.size());
-        if (callFunc(events[pos], c))
+        if (callFunc(events[pos], c)) 
             return;
     }
 }
@@ -295,10 +305,12 @@ bool EventWrapper::callFunc(std::shared_ptr<Event> event, int c)
         Time time = getStart();
         storage.moveEvent(event, time);
     }
-    else if (c == '2')
+    else if (c == '2') 
         storage.removeEvent(event);
     else if (c == '3')
         event->exportEvent();
+    else if (c == 4)
+        return true;
     else
         return false;
 

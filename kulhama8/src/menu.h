@@ -5,9 +5,6 @@
 
 #include "displayManager.h"
 
-#define BACK 4
-#define EXIT 2
-
 class Menu
 {
 public:
