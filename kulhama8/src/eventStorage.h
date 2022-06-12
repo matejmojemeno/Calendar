@@ -19,7 +19,7 @@ public:
      * returns all events happening on given day
      * @return std::vector<Event> 
      */
-    std::vector<Event> dayEvents(const Time &) const;
+    std::vector<std::shared_ptr<Event>> dayEvents(const Time &) const;
     /**
      * @brief 
      * finds all events with given name

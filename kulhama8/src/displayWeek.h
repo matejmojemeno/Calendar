@@ -1,6 +1,6 @@
 #include "displayDay.h"
 
-class DisplayWeek : public DisplayCalendar
+class DisplayWeek : public Display
 {
 public:
     /**
@@ -23,7 +23,7 @@ public:
      * @brief 
      * adjusts position if out of interval
      */
-    void adjustPos(int &, const std::vector<Event> &) const;
+    void adjustPos(int &, size_t) const;
 
 private:
     DisplayDay day;

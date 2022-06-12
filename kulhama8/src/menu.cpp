@@ -19,7 +19,7 @@ int Menu::menu(const std::vector<const char *> &menu) const
 
         c = getch();
     }
-
+    
     return '\n';
 }
 

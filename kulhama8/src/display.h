@@ -4,12 +4,18 @@
 
 #include "eventWrapper.h"
 
-class DisplayCalendar
+#define BACK 4
+
+class Display
 {
 public:
-    virtual ~DisplayCalendar();
-
-    void display(const Time &) const;
+    /**
+     * @brief Destroy the Display object
+     * virtual destructor
+     */
+    virtual ~Display();
+    
+    virtual void display(const Time &) const;
 
     /**
      * @brief
@@ -38,7 +44,7 @@ public:
     virtual void controlDisplay(Time &, const EventStorage &) const = 0;
 
 protected:
-    static const std::array<const char *, 12> months;
-    static const std::array<const char *, 7> days;
-    static const std::array<const char *, 7> fullDays;
+    static const std::vector<const char *> months;
+    static const std::vector<const char *> days;
+    static const std::vector<const char *> fullDays;
 };

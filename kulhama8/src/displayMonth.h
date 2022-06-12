@@ -1,6 +1,6 @@
 #include "displayWeek.h"
 
-class DisplayMonth : public DisplayCalendar
+class DisplayMonth : public Display
 {
 public:
     /**

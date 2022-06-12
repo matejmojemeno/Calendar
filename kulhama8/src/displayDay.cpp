@@ -7,8 +7,8 @@ void DisplayDay::displayDays(const Time &time) const {
 
 void DisplayDay::displayEvents(const Time &time, const EventStorage &events, int &pos) const
 {
-    std::vector<Event> eventsList = events.dayEvents(time);
-    adjustPos(pos, eventsList);
+    std::vector<std::shared_ptr<Event>> eventsList = events.dayEvents(time);
+    adjustPos(pos, eventsList.size());
     int down, maxDepth;
     bool highlight;
     eventsList.size() > 5 ? maxDepth = 5 : maxDepth = eventsList.size();
@@ -17,7 +17,7 @@ void DisplayDay::displayEvents(const Time &time, const EventStorage &events, int
     {
         pos > 4 ? down = pos - 4 : down = 0;
         i + down == pos ? highlight = true : highlight = false;
-        eventsList[i + down].displaySmall(i + 2, highlight);
+        eventsList[i + down]->displaySmall(i + 2, highlight);
     }
 }
 
@@ -51,10 +51,10 @@ void DisplayDay::display(const Time &time, const EventStorage &events, int &pos)
     displayEvents(time, events, pos);
 }
 
-void DisplayDay::adjustPos(int &pos, const std::vector<Event> &events) const
+void DisplayDay::adjustPos(int &pos, size_t listSize) const
 {
     if (pos < -1)
         pos = -1;
-    else if (pos >= (int)events.size())
-        pos = events.size() - 1;
+    else if (pos >= static_cast<int>(listSize))
+        pos = static_cast<int>(listSize) - 1;
 }

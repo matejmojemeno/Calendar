@@ -1,13 +1,15 @@
 #include <iostream>
 #include <ncurses.h>
 
-#include "application.h"
+#include "calendar.h"
 
 using namespace std;
 
 int main()
 {
-    Application a;
-    a.startCalendar();
+    Calendar cal;
+    cal.startApplication();
+    cal.runApplication();
+    cal.endApplication();
     return 0;
 }

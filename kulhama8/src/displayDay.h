@@ -1,6 +1,6 @@
-#include "displayCalendar.h"
+#include "display.h"
 
-class DisplayDay : public DisplayCalendar {
+class DisplayDay : public Display {
 public:
     /**
      * @brief 
@@ -22,5 +22,5 @@ public:
      * @brief 
      * adjusts position if out of interval
      */
-    void adjustPos(int &, const std::vector<Event> &) const;
+    void adjustPos(int &, size_t) const;
 };

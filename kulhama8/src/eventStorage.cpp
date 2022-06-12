@@ -52,7 +52,8 @@ void EventStorage::insertByStart(const std::shared_ptr<OneTimeEvent> &event)
     else
     {
         eventsByStart.insert(std::upper_bound(eventsByStart.begin(), eventsByStart.end(), event, [](std::shared_ptr<OneTimeEvent> ls, std::shared_ptr<OneTimeEvent> rs)
-                                              { return ls->start < rs->start; }), event);
+                                              { return ls->start < rs->start; }),
+                             event);
     }
 }
 
@@ -63,7 +64,8 @@ void EventStorage::insertByEnd(const std::shared_ptr<OneTimeEvent> &event)
     else
     {
         eventsByEnd.insert(std::upper_bound(eventsByEnd.begin(), eventsByEnd.end(), event, [](std::shared_ptr<OneTimeEvent> ls, std::shared_ptr<OneTimeEvent> rs)
-                                            { return ls->end < rs->end; }), event);
+                                            { return ls->end < rs->end; }),
+                           event);
     }
 }
 
@@ -130,7 +132,8 @@ std::vector<std::shared_ptr<Event>> EventStorage::findPlace(const std::string &p
 void EventStorage::removeEvent(const std::shared_ptr<Event> event)
 {
     removeAll(event);
-    if (event->rep == NEVER) {
+    if (event->rep == NEVER)
+    {
         removeByStart(*event);
         removeByEnd(*event);
     }
@@ -171,11 +174,24 @@ bool EventStorage::moveEvent(std::shared_ptr<Event> event, const Time &newStart)
     removeEvent(event);
     bool moved = true;
 
-    if (! checkDate(*event) && event->rep == NEVER)
+    if (!checkDate(*event) && event->rep == NEVER)
         moved = false;
     else
         event->move(newStart);
 
     addEvent(*event);
     return moved;
+}
+
+std::vector<std::shared_ptr<Event>> EventStorage::dayEvents(const Time &time) const
+{
+    std::vector<std::shared_ptr<Event>> dayEvents;
+    for (auto event : allEvents)
+        if (event->isSameDay(time))
+            dayEvents.push_back(event);
+
+    sort(dayEvents.begin(), dayEvents.end(), [](const std::shared_ptr<Event> ls, const std::shared_ptr<Event> rs)
+         { return std::tie(ls->start.m_hour, ls->start.m_min) < std::tie(rs->start.m_hour, rs->start.m_min); });
+        
+    return dayEvents;
 }
