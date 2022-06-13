@@ -307,8 +307,14 @@ bool EventWrapper::callFunc(std::shared_ptr<Event> event, int c)
     }
     else if (c == '2') 
         storage.removeEvent(event);
-    else if (c == '3')
+    else if (c == '3') {
+        try {
         event->exportEvent();
+        }
+        catch(std::invalid_argument &ia) {
+            showError(ia.what());
+        }
+    }
     else if (c == 4)
         return true;
     else

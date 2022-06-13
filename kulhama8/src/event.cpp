@@ -9,8 +9,6 @@ Event::Event()
     place = "";
     participants = emptyVector;
     rep = 0;
-    if (end < start)
-        throw std::invalid_argument("Event cannot end before it started.");
 }
 
 Event::Event(const Time &s, const Time &e, const std::string &n, const std::string &p, const std::vector<std::string> &part, int r)
@@ -24,6 +22,9 @@ Event::Event(const Time &s, const Time &e, const std::string &n, const std::stri
 
     if (rep < NEVER || rep > MONTHLY)
         rep = 0;
+    
+    if (end < start)
+        throw std::invalid_argument("Event cannot end before it started.");
 }
 
 Event::Event(const Event &event)
