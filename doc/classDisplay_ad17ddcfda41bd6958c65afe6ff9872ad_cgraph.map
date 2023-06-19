@@ -1,0 +1,4 @@
+<map id="Display::displayEvents" name="Display::displayEvents">
+<area shape="rect" id="node1" title="displays events for given day" alt="" coords="5,29,175,55"/>
+<area shape="rect" id="node2" href="$classEventStorage.html#aafa334347faec2c6cca331b4552c520d" title="returns all events happening on given day" alt="" coords="223,29,408,55"/>
+</map>

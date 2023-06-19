@@ -1,0 +1,12 @@
+<map id="Time::toDate" name="Time::toDate">
+<area shape="rect" id="node1" title="turns number of days back to date" alt="" coords="5,83,112,109"/>
+<area shape="rect" id="node2" href="$classTime.html#a9119e1771a56c114640593bc77691df3" title="checks if remainder isnt whole year" alt="" coords="331,9,485,34"/>
+<area shape="rect" id="node4" href="$classTime.html#a618654639021ee3b7a31347e2a99b35f" title=" " alt="" coords="163,34,280,59"/>
+<area shape="rect" id="node5" href="$classTime.html#a387ec0952d1e3743e171e886618edda7" title=" " alt="" coords="160,83,283,109"/>
+<area shape="rect" id="node6" href="$classTime.html#a473857ac43b312260d5926a3f48b87b3" title=" " alt="" coords="352,134,464,159"/>
+<area shape="rect" id="node8" href="$classTime.html#a4ed6699e6c1be7514ed8871e1e4db778" title="Get the Year object functions called by toDate." alt="" coords="166,185,277,210"/>
+<area shape="rect" id="node3" href="$classTime.html#a14246bb0465a1ec6cf7c8d060f155672" title="checks if year is leap" alt="" coords="745,85,851,110"/>
+<area shape="rect" id="node7" href="$classTime.html#a23a721661d8b914739b6e7c3c19907da" title="return number of days of given month in a given year" alt="" coords="546,134,685,159"/>
+<area shape="rect" id="node9" href="$classTime.html#aa1d64c4fe3e67ecd454a8704ff77e8d1" title="returns number of days from day 0 to current date" alt="" coords="344,183,472,209"/>
+<area shape="rect" id="node10" href="$classTime.html#a9ae2f2b50e03404fa4eea5917913add0" title="counts leap years in an interval" alt="" coords="533,183,697,209"/>
+</map>

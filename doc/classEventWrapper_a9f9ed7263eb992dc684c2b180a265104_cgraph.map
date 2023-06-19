@@ -1,0 +1,7 @@
+<map id="EventWrapper::getFileString" name="EventWrapper::getFileString">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,209,56"/>
+<area shape="rect" id="node2" href="$classEventWrapper.html#a75beb2c26d95d0b049e96317c34f2e84" title="checks if certain character is in file" alt="" coords="257,5,448,31"/>
+<area shape="rect" id="node3" href="$classParser.html#a4f39aeaac26a87efdf7ccad0780f4cbb" title="trims excessive spaces in front and at back of string" alt="" coords="285,55,420,80"/>
+<area shape="rect" id="node4" href="$classParser.html#a72e2e5ae8b43d98f3186af64ad73836c" title="functions called by trimString" alt="" coords="501,29,619,55"/>
+<area shape="rect" id="node5" href="$classParser.html#a228b2763b283b58c2b2ff33d385bf2b5" title=" " alt="" coords="496,79,624,104"/>
+</map>

@@ -1,0 +1,17 @@
+<map id="EventStorage::checkDate" name="EventStorage::checkDate">
+<area shape="rect" id="node1" title="check if date of event doesnt collide with other events" alt="" coords="2549,79,2736,104"/>
+<area shape="rect" id="node2" href="$classEventStorage.html#a8ffe8869fafb058123ced90250d7e117" title="adds one time event to the storage" alt="" coords="2301,53,2501,79"/>
+<area shape="rect" id="node13" href="$classEventStorage.html#a7c8f60a8f20883869f3264c4d2972602" title="moves event to a new date" alt="" coords="1836,104,2027,129"/>
+<area shape="rect" id="node3" href="$classEventStorage.html#ab71c10932e9c1970afb5d6503b7bd65a" title="adds new event" alt="" coords="2075,53,2253,79"/>
+<area shape="rect" id="node4" href="$classEventWrapper.html#a451ac3e3ea3cbb4d959ef8cf0b0cad6b" title="calls function to add event to storage" alt="" coords="1581,53,1788,79"/>
+<area shape="rect" id="node5" href="$classEventWrapper.html#af2e1028073029f6a99e23bb6701f132a" title="create new event" alt="" coords="1331,5,1517,31"/>
+<area shape="rect" id="node12" href="$classEventWrapper.html#a3532b2430947d6273bdc2eb00fbbd694" title="read new event from file" alt="" coords="1319,55,1529,80"/>
+<area shape="rect" id="node6" href="$classCalendar.html#ada05d190888249c7dc7bb71839f563e1" title="the same but event menu" alt="" coords="1052,55,1267,80"/>
+<area shape="rect" id="node7" href="$classCalendar.html#a0f1f8905532dd8c52345a0ed823e4ae6" title="runs event menu of the calendar" alt="" coords="821,55,1004,80"/>
+<area shape="rect" id="node8" href="$classCalendar.html#a046cd9ae688d5e957a526738de06807d" title="calls function based of position in main menu when enter pressed" alt="" coords="564,55,773,80"/>
+<area shape="rect" id="node9" href="$classCalendar.html#a48e6179eb6d86d4549699b34874e90e1" title="runs main menu of the calendar" alt="" coords="339,55,516,80"/>
+<area shape="rect" id="node10" href="$classCalendar.html#ad46fd3199a1a60cc3a5efcbc7643d65c" title="main program manager" alt="" coords="108,55,291,80"/>
+<area shape="rect" id="node11" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,55,60,80"/>
+<area shape="rect" id="node14" href="$classEventWrapper.html#a312a12da0dbda6e9973bd02bfe5dff66" title="calls function chosen by user" alt="" coords="1597,104,1772,129"/>
+<area shape="rect" id="node15" href="$classEventWrapper.html#a8f8c027ab75ae9bc0781a2ef0df44b39" title="manage given group of events" alt="" coords="1315,104,1533,129"/>
+</map>

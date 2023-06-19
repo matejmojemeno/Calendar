@@ -1,0 +1,6 @@
+<map id="Time::getYear" name="Time::getYear">
+<area shape="rect" id="node1" title="Get the Year object functions called by toDate." alt="" coords="337,31,448,56"/>
+<area shape="rect" id="node2" href="$classTime.html#a4583b61806fce028adeab70e301f7d9f" title="turns number of days back to date" alt="" coords="183,31,289,56"/>
+<area shape="rect" id="node3" href="$classTime.html#a5cbe56b3765b7b25e47876e318f0783f" title="return copy of object increased by n minutes" alt="" coords="5,5,135,31"/>
+<area shape="rect" id="node4" href="$classTime.html#ae58f0ebc2062d7348995a5f0aa9044da" title="returns number of minutes between two dates" alt="" coords="9,55,131,80"/>
+</map>

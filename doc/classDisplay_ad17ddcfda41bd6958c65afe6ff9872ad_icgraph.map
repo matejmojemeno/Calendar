@@ -1,0 +1,5 @@
+<map id="Display::displayEvents" name="Display::displayEvents">
+<area shape="rect" id="node1" title="displays events for given day" alt="" coords="216,31,385,56"/>
+<area shape="rect" id="node2" href="$classDisplayDay.html#abd2e7a30d519ee63ec4c954b7e1e6779" title="displays all components together" alt="" coords="11,5,162,31"/>
+<area shape="rect" id="node3" href="$classDisplayWeek.html#a0efae5bc87c9a647a89961c116fb508c" title="displays all components together" alt="" coords="5,55,168,80"/>
+</map>

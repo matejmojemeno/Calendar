@@ -1,0 +1,5 @@
+<map id="Time::monthDays" name="Time::monthDays">
+<area shape="rect" id="node1" title="return number of days of current year" alt="" coords="468,5,607,31"/>
+<area shape="rect" id="node2" href="$classDisplayMonth.html#a813150d1039f89fd61f0165e9576ba28" title="displays all days of month" alt="" coords="220,5,420,31"/>
+<area shape="rect" id="node3" href="$classDisplayMonth.html#a085d7e557766007ac1956b052284dd96" title="displays all components together" alt="" coords="5,5,172,31"/>
+</map>

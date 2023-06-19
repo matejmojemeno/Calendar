@@ -1,0 +1,4 @@
+<map id="Calendar::endApplication" name="Calendar::endApplication">
+<area shape="rect" id="node1" title="prepares program for exit" alt="" coords="5,5,191,31"/>
+<area shape="rect" id="node2" href="$classControls.html#aac89fe6229526abb396b1bbddb6a2c54" title="ends ncurses library" alt="" coords="239,5,399,31"/>
+</map>

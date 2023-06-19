@@ -1,0 +1,6 @@
+<map id="Time::Time" name="Time::Time">
+<area shape="rect" id="node1" title="Construct a new Time object constructs Time while checking for integer overflow." alt="" coords="5,5,101,31"/>
+<area shape="rect" id="node2" href="$classTime.html#a36b6d05dd7502b4b36acff82d15b0c4f" title="checks validity of date" alt="" coords="149,5,281,31"/>
+<area shape="rect" id="node3" href="$classTime.html#a23a721661d8b914739b6e7c3c19907da" title="return number of days of given month in a given year" alt="" coords="329,5,468,31"/>
+<area shape="rect" id="node4" href="$classTime.html#a14246bb0465a1ec6cf7c8d060f155672" title="checks if year is leap" alt="" coords="516,5,621,31"/>
+</map>

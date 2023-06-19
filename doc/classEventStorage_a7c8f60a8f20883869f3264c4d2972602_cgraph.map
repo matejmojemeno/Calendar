@@ -1,0 +1,19 @@
+<map id="EventStorage::moveEvent" name="EventStorage::moveEvent">
+<area shape="rect" id="node1" title="moves event to a new date" alt="" coords="5,203,196,228"/>
+<area shape="rect" id="node2" href="$classEventStorage.html#ab71c10932e9c1970afb5d6503b7bd65a" title="adds new event" alt="" coords="257,152,435,177"/>
+<area shape="rect" id="node4" href="$classEventStorage.html#a9322e467a7737b39382a5322c3af2702" title="check if date of event doesnt collide with other events" alt="" coords="769,203,956,228"/>
+<area shape="rect" id="node14" href="$classEventStorage.html#aadc3cf588e4ffca10137dc9d226ba721" title="removes event with given name if exists" alt="" coords="244,277,448,303"/>
+<area shape="rect" id="node3" href="$classEventStorage.html#a8ffe8869fafb058123ced90250d7e117" title="adds one time event to the storage" alt="" coords="503,103,703,128"/>
+<area shape="rect" id="node13" href="$classEventStorage.html#af267e82e0299762ee4b0d2e1035a8270" title="adds repeated event to the storage" alt="" coords="520,152,687,177"/>
+<area shape="rect" id="node5" href="$classEventStorage.html#afcfb467bf9ddd1da9574ab65e8524cc7" title="finds new starting date to event" alt="" coords="762,5,963,31"/>
+<area shape="rect" id="node7" href="$classEventStorage.html#a02e4898ae21a9a6f305c7718fad341e4" title="inserts event" alt="" coords="764,55,961,80"/>
+<area shape="rect" id="node10" href="$classEvent.html#a63caa5eef51c1dc1e288e2a082e0b87a" title="moves event to a new start adjusts end accordingly" alt="" coords="811,104,915,129"/>
+<area shape="rect" id="node11" href="$classOneTimeEvent.html#a3d880343c3843c3762bff0f8f9c3ac9b" title="ask user if he wants to move the event" alt="" coords="759,153,967,179"/>
+<area shape="rect" id="node6" href="$classEventStorage.html#ab0a9659db70869c7fd0fac2966382238" title="finds the next closest start after some date" alt="" coords="1031,5,1208,31"/>
+<area shape="rect" id="node8" href="$classEventStorage.html#a980dc7a32547ec89751bc62912a452ec" title="inserts event while sorting based on end of event" alt="" coords="1022,55,1217,80"/>
+<area shape="rect" id="node9" href="$classEventStorage.html#a9f7293e00b6f25b77d77563b7afb8d32" title="inserts event while sorting based on start of event" alt="" coords="1018,104,1221,129"/>
+<area shape="rect" id="node12" href="$classOneTimeEvent.html#a4a6391efa908bd14a187fa42a53989ac" title="print the move request" alt="" coords="1015,153,1224,179"/>
+<area shape="rect" id="node15" href="$classEventStorage.html#acc994d8c26ccd20453c66fd8f6c753f7" title="removes event from vector of all events" alt="" coords="511,253,695,279"/>
+<area shape="rect" id="node16" href="$classEventStorage.html#ae49503519989e74effbaa7346160b264" title=" " alt="" coords="499,303,707,328"/>
+<area shape="rect" id="node17" href="$classEventStorage.html#aa52f92f2167f30e934c8ef5feab4d2fc" title="removes event from sorted vectors" alt="" coords="496,352,711,377"/>
+</map>

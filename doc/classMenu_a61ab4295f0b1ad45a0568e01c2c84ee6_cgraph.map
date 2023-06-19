@@ -1,0 +1,6 @@
+<map id="Menu::mainMenu" name="Menu::mainMenu">
+<area shape="rect" id="node1" title="start menu" alt="" coords="5,29,140,55"/>
+<area shape="rect" id="node2" href="$classMenu.html#afa250b42b2eee48ac216bab772803da1" title="function to operate chosen menu" alt="" coords="188,29,291,55"/>
+<area shape="rect" id="node3" href="$classMenu.html#a1f566e7cfa90c27870ac88dca4bd8470" title="prints menu to screen" alt="" coords="339,29,488,55"/>
+<area shape="rect" id="node4" href="$classMenu.html#af369e0f1c1b7d1b8ecf2c8c21da676af" title="updates position if out of interval" alt="" coords="346,79,481,104"/>
+</map>

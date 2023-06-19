@@ -1,0 +1,10 @@
+<map id="Time::dayNumber" name="Time::dayNumber">
+<area shape="rect" id="node1" title="returns order of current day in week" alt="" coords="468,80,607,105"/>
+<area shape="rect" id="node2" href="$classDisplayDay.html#ad6bd593b28d031b2532d5af74e003581" title="displays given day" alt="" coords="228,5,412,31"/>
+<area shape="rect" id="node4" href="$classDisplayMonth.html#a813150d1039f89fd61f0165e9576ba28" title="displays all days of month" alt="" coords="220,55,420,80"/>
+<area shape="rect" id="node6" href="$classDisplayWeek.html#acaff1699981de60ad9e9a6fe376d1907" title="displays days of given week" alt="" coords="223,104,417,129"/>
+<area shape="rect" id="node8" href="$classWeeklyEvent.html#a8c998fc0adb3316db4ee9d5659858276" title="checks if event happens on given day" alt="" coords="225,153,415,179"/>
+<area shape="rect" id="node3" href="$classDisplayDay.html#abd2e7a30d519ee63ec4c954b7e1e6779" title="displays all components together" alt="" coords="13,5,164,31"/>
+<area shape="rect" id="node5" href="$classDisplayMonth.html#a085d7e557766007ac1956b052284dd96" title="displays all components together" alt="" coords="5,55,172,80"/>
+<area shape="rect" id="node7" href="$classDisplayWeek.html#a0efae5bc87c9a647a89961c116fb508c" title="displays all components together" alt="" coords="7,104,170,129"/>
+</map>

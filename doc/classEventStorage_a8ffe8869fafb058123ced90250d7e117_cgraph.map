@@ -1,0 +1,12 @@
+<map id="EventStorage::addOneTime" name="EventStorage::addOneTime">
+<area shape="rect" id="node1" title="adds one time event to the storage" alt="" coords="5,104,205,129"/>
+<area shape="rect" id="node2" href="$classEventStorage.html#a9322e467a7737b39382a5322c3af2702" title="check if date of event doesnt collide with other events" alt="" coords="264,5,451,31"/>
+<area shape="rect" id="node3" href="$classEventStorage.html#afcfb467bf9ddd1da9574ab65e8524cc7" title="finds new starting date to event" alt="" coords="257,55,458,80"/>
+<area shape="rect" id="node5" href="$classEventStorage.html#a02e4898ae21a9a6f305c7718fad341e4" title="inserts event" alt="" coords="259,104,456,129"/>
+<area shape="rect" id="node8" href="$classEvent.html#a63caa5eef51c1dc1e288e2a082e0b87a" title="moves event to a new start adjusts end accordingly" alt="" coords="305,153,409,179"/>
+<area shape="rect" id="node9" href="$classOneTimeEvent.html#a3d880343c3843c3762bff0f8f9c3ac9b" title="ask user if he wants to move the event" alt="" coords="253,203,461,228"/>
+<area shape="rect" id="node4" href="$classEventStorage.html#ab0a9659db70869c7fd0fac2966382238" title="finds the next closest start after some date" alt="" coords="525,55,703,80"/>
+<area shape="rect" id="node6" href="$classEventStorage.html#a980dc7a32547ec89751bc62912a452ec" title="inserts event while sorting based on end of event" alt="" coords="517,104,711,129"/>
+<area shape="rect" id="node7" href="$classEventStorage.html#a9f7293e00b6f25b77d77563b7afb8d32" title="inserts event while sorting based on start of event" alt="" coords="513,153,715,179"/>
+<area shape="rect" id="node10" href="$classOneTimeEvent.html#a4a6391efa908bd14a187fa42a53989ac" title="print the move request" alt="" coords="509,203,719,228"/>
+</map>

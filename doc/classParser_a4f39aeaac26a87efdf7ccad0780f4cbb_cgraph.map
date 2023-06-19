@@ -1,0 +1,5 @@
+<map id="Parser::trimString" name="Parser::trimString">
+<area shape="rect" id="node1" title="trims excessive spaces in front and at back of string" alt="" coords="5,31,140,56"/>
+<area shape="rect" id="node2" href="$classParser.html#a72e2e5ae8b43d98f3186af64ad73836c" title="functions called by trimString" alt="" coords="193,5,311,31"/>
+<area shape="rect" id="node3" href="$classParser.html#a228b2763b283b58c2b2ff33d385bf2b5" title=" " alt="" coords="188,55,316,80"/>
+</map>

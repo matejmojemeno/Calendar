@@ -1,0 +1,7 @@
+<map id="Time::getYear" name="Time::getYear">
+<area shape="rect" id="node1" title="Get the Year object functions called by toDate." alt="" coords="5,31,116,56"/>
+<area shape="rect" id="node2" href="$classTime.html#aa1d64c4fe3e67ecd454a8704ff77e8d1" title="returns number of days from day 0 to current date" alt="" coords="164,31,292,56"/>
+<area shape="rect" id="node3" href="$classTime.html#a9ae2f2b50e03404fa4eea5917913add0" title="counts leap years in an interval" alt="" coords="340,5,504,31"/>
+<area shape="rect" id="node4" href="$classTime.html#a23a721661d8b914739b6e7c3c19907da" title="return number of days of given month in a given year" alt="" coords="353,55,491,80"/>
+<area shape="rect" id="node5" href="$classTime.html#a14246bb0465a1ec6cf7c8d060f155672" title="checks if year is leap" alt="" coords="552,55,657,80"/>
+</map>

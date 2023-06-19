@@ -1,0 +1,5 @@
+<map id="Controls::initNcurses" name="Controls::initNcurses">
+<area shape="rect" id="node1" title="initializes ncurses libary" alt="" coords="5,31,163,56"/>
+<area shape="rect" id="node2" href="$classControls.html#a430c7dd1e3da1038cb9dd4f74d5ad061" title="initializes all color pairs" alt="" coords="215,5,361,31"/>
+<area shape="rect" id="node3" href="$classControls.html#af87a6fec6dd3858a90f4c849e72a9942" title=" " alt="" coords="211,55,365,80"/>
+</map>

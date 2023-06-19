@@ -1,0 +1,4 @@
+<map id="DisplayWeek::displayDays" name="DisplayWeek::displayDays">
+<area shape="rect" id="node1" title="displays days of given week" alt="" coords="5,5,200,31"/>
+<area shape="rect" id="node2" href="$classTime.html#ae29eddaea5d425898cff797f22af4141" title="returns order of current day in week" alt="" coords="248,5,387,31"/>
+</map>

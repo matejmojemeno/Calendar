@@ -1,0 +1,13 @@
+<map id="EventStorage::removeByStart" name="EventStorage::removeByStart">
+<area shape="rect" id="node1" title="removes event from sorted vectors" alt="" coords="2295,5,2509,31"/>
+<area shape="rect" id="node2" href="$classEventStorage.html#aadc3cf588e4ffca10137dc9d226ba721" title="removes event with given name if exists" alt="" coords="2043,5,2247,31"/>
+<area shape="rect" id="node3" href="$classEventWrapper.html#a312a12da0dbda6e9973bd02bfe5dff66" title="calls function chosen by user" alt="" coords="1581,5,1756,31"/>
+<area shape="rect" id="node11" href="$classEventStorage.html#a7c8f60a8f20883869f3264c4d2972602" title="moves event to a new date" alt="" coords="1804,31,1995,56"/>
+<area shape="rect" id="node4" href="$classEventWrapper.html#a8f8c027ab75ae9bc0781a2ef0df44b39" title="manage given group of events" alt="" coords="1315,5,1533,31"/>
+<area shape="rect" id="node5" href="$classCalendar.html#ada05d190888249c7dc7bb71839f563e1" title="the same but event menu" alt="" coords="1052,5,1267,31"/>
+<area shape="rect" id="node6" href="$classCalendar.html#a0f1f8905532dd8c52345a0ed823e4ae6" title="runs event menu of the calendar" alt="" coords="821,5,1004,31"/>
+<area shape="rect" id="node7" href="$classCalendar.html#a046cd9ae688d5e957a526738de06807d" title="calls function based of position in main menu when enter pressed" alt="" coords="564,5,773,31"/>
+<area shape="rect" id="node8" href="$classCalendar.html#a48e6179eb6d86d4549699b34874e90e1" title="runs main menu of the calendar" alt="" coords="339,5,516,31"/>
+<area shape="rect" id="node9" href="$classCalendar.html#ad46fd3199a1a60cc3a5efcbc7643d65c" title="main program manager" alt="" coords="108,5,291,31"/>
+<area shape="rect" id="node10" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,31"/>
+</map>

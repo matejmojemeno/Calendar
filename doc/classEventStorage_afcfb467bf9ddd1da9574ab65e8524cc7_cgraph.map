@@ -1,0 +1,4 @@
+<map id="EventStorage::findNewStart" name="EventStorage::findNewStart">
+<area shape="rect" id="node1" title="finds new starting date to event" alt="" coords="5,5,207,31"/>
+<area shape="rect" id="node2" href="$classEventStorage.html#ab0a9659db70869c7fd0fac2966382238" title="finds the next closest start after some date" alt="" coords="255,5,432,31"/>
+</map>

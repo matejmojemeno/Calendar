@@ -1,0 +1,3 @@
+build/dailyEvent.o: src/dailyEvent.cpp src/dailyEvent.h \
+ src/oneTimeEvent.h src/event.h src/stringParser.h src/time.h \
+ src/constants.h src/controls.h

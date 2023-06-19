@@ -1,0 +1,9 @@
+<map id="Time::countLeapYears" name="Time::countLeapYears">
+<area shape="rect" id="node1" title="counts leap years in an interval" alt="" coords="704,59,868,84"/>
+<area shape="rect" id="node2" href="$classTime.html#aa1d64c4fe3e67ecd454a8704ff77e8d1" title="returns number of days from day 0 to current date" alt="" coords="528,59,656,84"/>
+<area shape="rect" id="node3" href="$classTime.html#a4ed6699e6c1be7514ed8871e1e4db778" title="Get the Year object functions called by toDate." alt="" coords="353,34,464,59"/>
+<area shape="rect" id="node5" href="$classTime.html#a5cbe56b3765b7b25e47876e318f0783f" title="return copy of object increased by n minutes" alt="" coords="5,10,135,35"/>
+<area shape="rect" id="node6" href="$classTime.html#ae58f0ebc2062d7348995a5f0aa9044da" title="returns number of minutes between two dates" alt="" coords="9,59,131,84"/>
+<area shape="rect" id="node7" href="$classTime.html#a30a965ce1e05786e8acddbfb5bfc7f39" title="checks if week is odd or even" alt="" coords="337,135,480,160"/>
+<area shape="rect" id="node4" href="$classTime.html#a4583b61806fce028adeab70e301f7d9f" title="turns number of days back to date" alt="" coords="183,34,289,59"/>
+</map>

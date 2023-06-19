@@ -1,0 +1,9 @@
+<map id="EventWrapper::eventsByPlace" name="EventWrapper::eventsByPlace">
+<area shape="rect" id="node1" title="find all events with given place" alt="" coords="5,31,224,56"/>
+<area shape="rect" id="node2" href="$classEventStorage.html#af5f6b10e93d5af96d9db1cfe2d423219" title="finds all events with given name" alt="" coords="273,5,449,31"/>
+<area shape="rect" id="node3" href="$classEventWrapper.html#ab81842ef6370ce12f840306ce5110d40" title=" " alt="" coords="272,55,451,80"/>
+<area shape="rect" id="node4" href="$classParser.html#afbe2babe797f3a1ef1329891b87e5af8" title="Get the String object reads a string from input." alt="" coords="499,55,628,80"/>
+<area shape="rect" id="node5" href="$classParser.html#a4a4834a74459a8a53ec5a74d127e394a" title="converts char[] to std::string" alt="" coords="677,5,835,31"/>
+<area shape="rect" id="node6" href="$classControls.html#aee5cbc041e5c4ef150770ddb605fda10" title="functions to show and stop showing cursos" alt="" coords="676,55,836,80"/>
+<area shape="rect" id="node7" href="$classControls.html#af87a6fec6dd3858a90f4c849e72a9942" title=" " alt="" coords="679,104,833,129"/>
+</map>

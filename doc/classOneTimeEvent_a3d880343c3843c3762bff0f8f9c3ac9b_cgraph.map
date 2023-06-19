@@ -1,0 +1,4 @@
+<map id="OneTimeEvent::wantToMove" name="OneTimeEvent::wantToMove">
+<area shape="rect" id="node1" title="ask user if he wants to move the event" alt="" coords="5,5,213,31"/>
+<area shape="rect" id="node2" href="$classOneTimeEvent.html#a4a6391efa908bd14a187fa42a53989ac" title="print the move request" alt="" coords="261,5,471,31"/>
+</map>

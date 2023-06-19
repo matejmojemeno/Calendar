@@ -1,0 +1,6 @@
+<map id="DisplayMonth::displayDays" name="DisplayMonth::displayDays">
+<area shape="rect" id="node1" title="displays all days of month" alt="" coords="5,31,205,56"/>
+<area shape="rect" id="node2" href="$classTime.html#ae29eddaea5d425898cff797f22af4141" title="returns order of current day in week" alt="" coords="253,5,392,31"/>
+<area shape="rect" id="node3" href="$classTime.html#a0899454b705fd143a484af0dd4b42f19" title="return number of days of current year" alt="" coords="253,55,392,80"/>
+<area shape="rect" id="node4" href="$classTime.html#a14246bb0465a1ec6cf7c8d060f155672" title="checks if year is leap" alt="" coords="440,55,545,80"/>
+</map>

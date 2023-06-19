@@ -1,0 +1,9 @@
+<map id="DisplayWeek::display" name="DisplayWeek::display">
+<area shape="rect" id="node1" title="displays all components together" alt="" coords="5,80,168,105"/>
+<area shape="rect" id="node2" href="$classDisplay.html#aebab0595b7c16702b6139ae085b7354e" title="displays days from Sunday to Saturday above dates" alt="" coords="216,5,413,31"/>
+<area shape="rect" id="node3" href="$classDisplayWeek.html#acaff1699981de60ad9e9a6fe376d1907" title="displays days of given week" alt="" coords="217,55,412,80"/>
+<area shape="rect" id="node5" href="$classDisplay.html#ad17ddcfda41bd6958c65afe6ff9872ad" title="displays events for given day" alt="" coords="230,104,399,129"/>
+<area shape="rect" id="node7" href="$classDisplay.html#a21780d885a4e0e49e8ef4141cc9738d5" title="displays month and year" alt="" coords="229,153,401,179"/>
+<area shape="rect" id="node4" href="$classTime.html#ae29eddaea5d425898cff797f22af4141" title="returns order of current day in week" alt="" coords="485,43,623,68"/>
+<area shape="rect" id="node6" href="$classEventStorage.html#aafa334347faec2c6cca331b4552c520d" title="returns all events happening on given day" alt="" coords="461,116,647,141"/>
+</map>

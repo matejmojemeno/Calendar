@@ -1,0 +1,7 @@
+<map id="Parser::getVector" name="Parser::getVector">
+<area shape="rect" id="node1" title="Get the Vector object turns string into vector." alt="" coords="5,31,137,56"/>
+<area shape="rect" id="node2" href="$classParser.html#a6b187643b996630081af039649047588" title="first checks if string isnt empty" alt="" coords="185,31,331,56"/>
+<area shape="rect" id="node3" href="$classParser.html#a4f39aeaac26a87efdf7ccad0780f4cbb" title="trims excessive spaces in front and at back of string" alt="" coords="379,31,513,56"/>
+<area shape="rect" id="node4" href="$classParser.html#a72e2e5ae8b43d98f3186af64ad73836c" title="functions called by trimString" alt="" coords="566,5,685,31"/>
+<area shape="rect" id="node5" href="$classParser.html#a228b2763b283b58c2b2ff33d385bf2b5" title=" " alt="" coords="561,55,689,80"/>
+</map>

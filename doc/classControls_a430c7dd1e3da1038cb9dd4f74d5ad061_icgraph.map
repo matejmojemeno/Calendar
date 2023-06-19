@@ -1,0 +1,6 @@
+<map id="Controls::initColors" name="Controls::initColors">
+<area shape="rect" id="node1" title="initializes all color pairs" alt="" coords="552,5,699,31"/>
+<area shape="rect" id="node2" href="$classControls.html#a509c3da611afaed9a9d2f8dd190a1ff2" title="initializes ncurses libary" alt="" coords="347,5,504,31"/>
+<area shape="rect" id="node3" href="$classCalendar.html#a668408f45981af0376850aa51865dab4" title="prepares application" alt="" coords="108,5,299,31"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,31"/>
+</map>

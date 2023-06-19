@@ -1,0 +1,6 @@
+<map id="Calendar::startApplication" name="Calendar::startApplication">
+<area shape="rect" id="node1" title="prepares application" alt="" coords="5,31,196,56"/>
+<area shape="rect" id="node2" href="$classControls.html#a509c3da611afaed9a9d2f8dd190a1ff2" title="initializes ncurses libary" alt="" coords="244,31,401,56"/>
+<area shape="rect" id="node3" href="$classControls.html#a430c7dd1e3da1038cb9dd4f74d5ad061" title="initializes all color pairs" alt="" coords="453,5,600,31"/>
+<area shape="rect" id="node4" href="$classControls.html#af87a6fec6dd3858a90f4c849e72a9942" title=" " alt="" coords="449,55,604,80"/>
+</map>

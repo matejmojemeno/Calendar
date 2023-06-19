@@ -1,0 +1,6 @@
+<map id="EventStorage::dayEvents" name="EventStorage::dayEvents">
+<area shape="rect" id="node1" title="returns all events happening on given day" alt="" coords="433,31,619,56"/>
+<area shape="rect" id="node2" href="$classDisplay.html#ad17ddcfda41bd6958c65afe6ff9872ad" title="displays events for given day" alt="" coords="216,31,385,56"/>
+<area shape="rect" id="node3" href="$classDisplayDay.html#abd2e7a30d519ee63ec4c954b7e1e6779" title="displays all components together" alt="" coords="11,5,162,31"/>
+<area shape="rect" id="node4" href="$classDisplayWeek.html#a0efae5bc87c9a647a89961c116fb508c" title="displays all components together" alt="" coords="5,55,168,80"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="EventWrapper::getRepetition" name="EventWrapper::getRepetition">
+<area shape="rect" id="node1" title=" " alt="" coords="5,55,216,80"/>
+<area shape="rect" id="node2" href="$classEventWrapper.html#ac0370342ea922c6b94d2143713a37712" title="draws menu for picking repetition" alt="" coords="264,5,479,31"/>
+<area shape="rect" id="node3" href="$classEventWrapper.html#a5bc79e24382942c8122b879aa7f93f02" title="clears line and moves cursor to the beginning of the line" alt="" coords="280,55,463,80"/>
+<area shape="rect" id="node4" href="$classEventWrapper.html#a7e2d143e4fb9a38d8dc40ec36b453f08" title="updates position of menu picker if needed" alt="" coords="276,104,467,129"/>
+</map>

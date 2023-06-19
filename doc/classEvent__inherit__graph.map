@@ -1,0 +1,8 @@
+<map id="Event" name="Event">
+<area shape="rect" id="node1" title=" " alt="" coords="318,5,449,288"/>
+<area shape="rect" id="node2" href="$classDailyEvent.html" title=" " alt="" coords="5,358,127,465"/>
+<area shape="rect" id="node3" href="$classMonthlyEvent.html" title=" " alt="" coords="151,358,288,465"/>
+<area shape="rect" id="node4" href="$classOneTimeEvent.html" title=" " alt="" coords="312,336,455,487"/>
+<area shape="rect" id="node5" href="$classTwoWeeklyEvent.html" title=" " alt="" coords="479,358,637,465"/>
+<area shape="rect" id="node6" href="$classWeeklyEvent.html" title=" " alt="" coords="661,358,793,465"/>
+</map>

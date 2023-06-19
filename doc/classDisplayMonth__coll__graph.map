@@ -1,0 +1,5 @@
+<map id="DisplayMonth" name="DisplayMonth">
+<area shape="rect" id="node1" title=" " alt="" coords="31,389,157,481"/>
+<area shape="rect" id="node2" href="$classDisplay.html" title=" " alt="" coords="5,5,172,185"/>
+<area shape="rect" id="node3" href="$classDisplayDay.html" title=" " alt="" coords="111,235,237,327"/>
+</map>

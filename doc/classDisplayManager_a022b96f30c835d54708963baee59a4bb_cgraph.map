@@ -1,0 +1,5 @@
+<map id="DisplayManager::display" name="DisplayManager::display">
+<area shape="rect" id="node1" title="displays a calendar :)" alt="" coords="5,31,188,56"/>
+<area shape="rect" id="node2" href="$classDisplayManager.html#a5766c109975b42966ff5cdb9d588d9dd" title="changes display type if appropriate key is pressed" alt="" coords="236,5,468,31"/>
+<area shape="rect" id="node3" href="$classDisplayManager.html#a213fa79dd67788862dc576b744cbd26e" title="changes time if appropriate key is pressed" alt="" coords="244,55,460,80"/>
+</map>

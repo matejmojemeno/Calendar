@@ -1,0 +1,4 @@
+<map id="Time::monthDays" name="Time::monthDays">
+<area shape="rect" id="node1" title="return number of days of current year" alt="" coords="5,5,144,31"/>
+<area shape="rect" id="node2" href="$classTime.html#a14246bb0465a1ec6cf7c8d060f155672" title="checks if year is leap" alt="" coords="192,5,297,31"/>
+</map>

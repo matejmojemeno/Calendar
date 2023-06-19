@@ -1,0 +1,8 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classEvent.html" title=" " alt="" coords="5,104,64,129"/>
+<area shape="rect" id="node2" href="$classDailyEvent.html" title=" " alt="" coords="131,5,225,31"/>
+<area shape="rect" id="node3" href="$classMonthlyEvent.html" title=" " alt="" coords="122,55,234,80"/>
+<area shape="rect" id="node4" href="$classOneTimeEvent.html" title=" " alt="" coords="119,104,237,129"/>
+<area shape="rect" id="node5" href="$classTwoWeeklyEvent.html" title=" " alt="" coords="112,153,244,179"/>
+<area shape="rect" id="node6" href="$classWeeklyEvent.html" title=" " alt="" coords="125,203,231,228"/>
+</map>

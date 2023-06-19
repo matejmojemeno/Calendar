@@ -1,0 +1,4 @@
+<map id="Time::adjustMinutes" name="Time::adjustMinutes">
+<area shape="rect" id="node1" title="checks if remainder isnt whole year" alt="" coords="5,5,160,31"/>
+<area shape="rect" id="node2" href="$classTime.html#a14246bb0465a1ec6cf7c8d060f155672" title="checks if year is leap" alt="" coords="208,5,313,31"/>
+</map>

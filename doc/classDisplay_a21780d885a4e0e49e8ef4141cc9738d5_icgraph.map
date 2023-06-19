@@ -1,0 +1,5 @@
+<map id="Display::displayHeader" name="Display::displayHeader">
+<area shape="rect" id="node1" title="displays month and year" alt="" coords="220,31,392,56"/>
+<area shape="rect" id="node2" href="$classDisplayMonth.html#a085d7e557766007ac1956b052284dd96" title="displays all components together" alt="" coords="5,5,172,31"/>
+<area shape="rect" id="node3" href="$classDisplayWeek.html#a0efae5bc87c9a647a89961c116fb508c" title="displays all components together" alt="" coords="7,55,170,80"/>
+</map>

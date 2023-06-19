@@ -1,0 +1,5 @@
+<map id="Time::checkDate" name="Time::checkDate">
+<area shape="rect" id="node1" title="checks validity of date" alt="" coords="5,5,137,31"/>
+<area shape="rect" id="node2" href="$classTime.html#a23a721661d8b914739b6e7c3c19907da" title="return number of days of given month in a given year" alt="" coords="185,5,324,31"/>
+<area shape="rect" id="node3" href="$classTime.html#a14246bb0465a1ec6cf7c8d060f155672" title="checks if year is leap" alt="" coords="372,5,477,31"/>
+</map>

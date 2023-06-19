@@ -1,0 +1,6 @@
+<map id="EventStorage::removeEvent" name="EventStorage::removeEvent">
+<area shape="rect" id="node1" title="removes event with given name if exists" alt="" coords="5,55,209,80"/>
+<area shape="rect" id="node2" href="$classEventStorage.html#acc994d8c26ccd20453c66fd8f6c753f7" title="removes event from vector of all events" alt="" coords="273,5,457,31"/>
+<area shape="rect" id="node3" href="$classEventStorage.html#ae49503519989e74effbaa7346160b264" title=" " alt="" coords="261,55,469,80"/>
+<area shape="rect" id="node4" href="$classEventStorage.html#aa52f92f2167f30e934c8ef5feab4d2fc" title="removes event from sorted vectors" alt="" coords="257,104,472,129"/>
+</map>

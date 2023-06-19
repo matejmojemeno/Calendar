@@ -1,0 +1,5 @@
+build/displayDay.o: src/displayDay.cpp src/displayDay.h src/display.h \
+ src/eventWrapper.h src/eventStorage.h src/monthlyEvent.h \
+ src/twoWeeklyEvent.h src/weeklyEvent.h src/dailyEvent.h \
+ src/oneTimeEvent.h src/event.h src/stringParser.h src/time.h \
+ src/constants.h src/controls.h

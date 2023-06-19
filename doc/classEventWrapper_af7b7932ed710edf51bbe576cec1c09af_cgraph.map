@@ -1,0 +1,9 @@
+<map id="EventWrapper::getFilePart" name="EventWrapper::getFilePart">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,196,56"/>
+<area shape="rect" id="node2" href="$classEventWrapper.html#a75beb2c26d95d0b049e96317c34f2e84" title="checks if certain character is in file" alt="" coords="244,5,435,31"/>
+<area shape="rect" id="node3" href="$classParser.html#ab80398044d4dffe81ac93abf08885ca1" title="Get the Vector object turns string into vector." alt="" coords="273,55,405,80"/>
+<area shape="rect" id="node4" href="$classParser.html#a6b187643b996630081af039649047588" title="first checks if string isnt empty" alt="" coords="483,55,628,80"/>
+<area shape="rect" id="node5" href="$classParser.html#a4f39aeaac26a87efdf7ccad0780f4cbb" title="trims excessive spaces in front and at back of string" alt="" coords="676,55,811,80"/>
+<area shape="rect" id="node6" href="$classParser.html#a72e2e5ae8b43d98f3186af64ad73836c" title="functions called by trimString" alt="" coords="863,29,982,55"/>
+<area shape="rect" id="node7" href="$classParser.html#a228b2763b283b58c2b2ff33d385bf2b5" title=" " alt="" coords="859,79,987,104"/>
+</map>
